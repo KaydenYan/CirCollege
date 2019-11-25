@@ -16,28 +16,28 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:text="左右滑动栏位ssss置"
-        app:layout_constraintVertical_weight="1"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintHeight_percent="0.05"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/newsList"
         android:layout_width="match_parent"
-        app:layout_constraintVertical_weight="10"
         android:layout_height="0dp"
         android:text="新闻ListView位置"
+        app:layout_constraintBottom_toTopOf="@id/buttomTab"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/swish"
-        app:layout_constraintBottom_toTopOf="@id/buttomTab"></TextView>
+        app:layout_constraintHeight_percent="0.9"></TextView>
 
     <TextView
         android:id="@+id/buttomTab"
-        app:layout_constraintVertical_weight="1"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:text="底部Tab切换位置111"
+        app:layout_constraintHeight_percent="0.05"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"/>
