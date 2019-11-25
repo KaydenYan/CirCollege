@@ -11,15 +11,75 @@
     android:fitsSystemWindows="true"使最上面的内容不与状态栏重叠
     -->
 
-    <TextView
-        android:id="@+id/swish"
-        android:layout_width="match_parent"
+
+    <HorizontalScrollView xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_height="0dp"
-        android:text="左右滑动栏位ssss置"
+        android:layout_width="match_parent"
+        android:scrollbars="none"
+        tools:ignore="MissingConstraints"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintHeight_percent="0.05"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:id="@+id/swish"
+        >
+        <android.support.constraint.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            app:layout_constraintLeft_toLeftOf="@id/swish"
+            android:background="@color/colorTheme"
+            >
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="新闻"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/xinwen"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/xinwen1"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="新闻"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/xinwen1"
+                app:layout_constraintLeft_toRightOf="@+id/xinwen"
+                app:layout_constraintRight_toLeftOf="@+id/xinwen2"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="新闻"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/xinwen2"
+                app:layout_constraintLeft_toRightOf="@+id/xinwen1"
+                app:layout_constraintRight_toLeftOf="@+id/xinwen3"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="新闻"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/xinwen3"
+                app:layout_constraintLeft_toRightOf="@+id/xinwen2"
+                app:layout_constraintRight_toLeftOf="@+id/xinwen4"/>
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="新闻"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/xinwen4"
+                app:layout_constraintLeft_toRightOf="@+id/xinwen3"
+                />
+        </android.support.constraint.ConstraintLayout>
+    </HorizontalScrollView>
 
     <TextView
         android:id="@+id/newsList"
