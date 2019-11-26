@@ -6,7 +6,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.funnews.josnGet.HttpUtil;
@@ -15,6 +14,7 @@ import java.io.IOException;
 
 import okhttp3.Call;
 import okhttp3.Response;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -33,8 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
-                parseJsonWithJsonObject(response);
-
+                HttpUtil.parseJsonWithJsonObject(response);
             }
         });
 
@@ -64,8 +63,6 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void parseJsonWithJsonObject(Response response) throws IOException {
-        String responseData=response.body().string();
-    }
+
 
 }
