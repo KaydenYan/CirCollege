@@ -20,7 +20,6 @@
         android:layout_width="256px"
         android:layout_height="192px"
         app:layout_constraintLeft_toLeftOf="parent"
-        android:src=""
         android:layout_centerVertical="true"
         android:scaleType="centerInside"
         app:layout_constraintTop_toBottomOf="@id/itemTitle"
