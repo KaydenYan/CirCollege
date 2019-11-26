@@ -33,50 +33,100 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:text="新闻"
+                android:text="头条"
                 android:textSize="25sp"
                 android:gravity="center"
-                android:id="@+id/xinwen"
+                android:id="@+id/top"
                 app:layout_constraintLeft_toLeftOf="parent"
-                app:layout_constraintRight_toLeftOf="@+id/xinwen1"
+                app:layout_constraintRight_toLeftOf="@+id/shehui"
                 />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:text="新闻"
+                android:text="社会"
                 android:textSize="25sp"
                 android:gravity="center"
-                android:id="@+id/xinwen1"
-                app:layout_constraintLeft_toRightOf="@+id/xinwen"
-                app:layout_constraintRight_toLeftOf="@+id/xinwen2"
+                android:id="@+id/shehui"
+                app:layout_constraintLeft_toRightOf="@+id/top"
+                app:layout_constraintRight_toLeftOf="@+id/guonei"
                 />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:text="新闻"
+                android:text="国内"
                 android:textSize="25sp"
                 android:gravity="center"
-                android:id="@+id/xinwen2"
-                app:layout_constraintLeft_toRightOf="@+id/xinwen1"
-                app:layout_constraintRight_toLeftOf="@+id/xinwen3"
+                android:id="@+id/guonei"
+                app:layout_constraintLeft_toRightOf="@+id/shehui"
+                app:layout_constraintRight_toLeftOf="@+id/guoji"
                 />
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:text="新闻"
+                android:text="国际"
                 android:textSize="25sp"
                 android:gravity="center"
-                android:id="@+id/xinwen3"
-                app:layout_constraintLeft_toRightOf="@+id/xinwen2"
-                app:layout_constraintRight_toLeftOf="@+id/xinwen4"/>
+                android:id="@+id/guoji"
+                app:layout_constraintLeft_toRightOf="@+id/guonei"
+                app:layout_constraintRight_toLeftOf="@+id/yule"/>
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="40dp"
-                android:text="新闻"
+                android:text="娱乐"
                 android:textSize="25sp"
                 android:gravity="center"
-                android:id="@+id/xinwen4"
-                app:layout_constraintLeft_toRightOf="@+id/xinwen3"
+                android:id="@+id/yule"
+                app:layout_constraintLeft_toRightOf="@+id/guoji"
+                app:layout_constraintRight_toLeftOf="@+id/tiyu"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="体育"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/tiyu"
+                app:layout_constraintLeft_toRightOf="@+id/yule"
+                app:layout_constraintRight_toLeftOf="@+id/junshi"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="军事"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/junshi"
+                app:layout_constraintLeft_toRightOf="@+id/tiyu"
+                app:layout_constraintRight_toLeftOf="@+id/keji"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="科技"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/keji"
+                app:layout_constraintLeft_toRightOf="@+id/junshi"
+                app:layout_constraintRight_toLeftOf="@+id/caijing"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="财经"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/caijing"
+                app:layout_constraintLeft_toRightOf="@+id/keji"
+                app:layout_constraintRight_toLeftOf="@+id/shishang"
+                />
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="40dp"
+                android:text="时尚"
+                android:textSize="25sp"
+                android:gravity="center"
+                android:id="@+id/shishang"
+                app:layout_constraintLeft_toRightOf="@+id/caijing"
                 />
         </android.support.constraint.ConstraintLayout>
     </HorizontalScrollView>
