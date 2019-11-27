@@ -4,14 +4,25 @@ import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.funnews.josnGet.HttpUtil;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
+
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.io.InputStream;
+import java.lang.reflect.Type;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Response;
@@ -21,11 +32,16 @@ import okhttp3.Response;
 public class MainActivity extends AppCompatActivity {
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
+    private Gson gson;
+    private final String TAG = MainActivity.class.getSimpleName();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setStatusBar();
+        Gson gson =new Gson();
+
+
         HttpUtil.sendRequestWithOkhttp("http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&", new okhttp3.Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
@@ -39,6 +55,8 @@ public class MainActivity extends AppCompatActivity {
         });
 
 }
+
+
 
     protected void setStatusBar() {//状态栏沉浸，状态栏颜色，状态栏系统图标的深浅色
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
@@ -63,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
-
-
+    //解析Json数据
 
 }
+

@@ -4,6 +4,7 @@ import java.io.IOException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
+import com.example.funnews.josnGet.json_insert;
 
 public class HttpUtil {
 
@@ -15,5 +16,7 @@ public class HttpUtil {
     }
     public static void parseJsonWithJsonObject(Response response) throws IOException {
         String responseData=response.body().string();
+
+        json_insert.convertArrayToList(responseData);
     }
 }
