@@ -49,12 +49,14 @@
             android:layout_width="140px"
             android:layout_height="140px"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="52dp"
-            android:layout_marginTop="16dp"
             android:scaleType="centerInside"
             android:src="@drawable/home"
             app:layout_constraintLeft_toLeftOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintVertical_bias="0.50"/>
 
         <ImageView
             android:id="@+id/likeBtn"
@@ -62,36 +64,42 @@
             android:tint="@color/colorTheme"
             android:layout_height="140px"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
             android:scaleType="centerInside"
             android:src="@drawable/heart"
-            app:layout_constraintLeft_toRightOf="@id/homeBtn"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.40"
+            app:layout_constraintVertical_bias="0.50"/>
 
         <ImageView
             android:id="@+id/moreBtn"
             android:layout_width="140px"
             android:layout_height="140px"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
             android:scaleType="centerInside"
             android:src="@drawable/moref"
-            app:layout_constraintLeft_toRightOf="@id/likeBtn"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.65"
+            app:layout_constraintVertical_bias="0.50"/>
 
         <ImageView
             android:id="@+id/myBtn"
             android:layout_width="140px"
             android:layout_height="140px"
             android:layout_centerVertical="true"
-            android:layout_marginLeft="32dp"
-            android:layout_marginTop="16dp"
             android:scaleType="centerInside"
             android:src="@drawable/my"
-            app:layout_constraintLeft_toRightOf="@id/moreBtn"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.90"
+            app:layout_constraintVertical_bias="0.50"/>
     </android.support.constraint.ConstraintLayout>
 
 
