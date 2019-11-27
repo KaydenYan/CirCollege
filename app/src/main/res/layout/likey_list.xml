@@ -55,22 +55,22 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.15"
+            app:layout_constraintHorizontal_bias="0.10"
             app:layout_constraintVertical_bias="0.50"/>
 
         <ImageView
             android:id="@+id/likeBtn"
             android:layout_width="140px"
-            android:tint="@color/colorTheme"
             android:layout_height="140px"
             android:layout_centerVertical="true"
             android:scaleType="centerInside"
+            android:tint="@color/colorTheme"
             android:src="@drawable/heart"
             app:layout_constraintLeft_toLeftOf="parent"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.40"
+            app:layout_constraintHorizontal_bias="0.38"
             app:layout_constraintVertical_bias="0.50"/>
 
         <ImageView
@@ -84,7 +84,7 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintHorizontal_bias="0.65"
+            app:layout_constraintHorizontal_bias="0.66"
             app:layout_constraintVertical_bias="0.50"/>
 
         <ImageView
