@@ -10,10 +10,10 @@ import android.widget.Toast;
 import com.example.funnews.josnGet.json_insert;
 
 public class DBHelper_toutiao extends SQLiteOpenHelper {
-    private Context context;
-
-    public DBHelper_toutiao(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
-        super(context, name, factory, version);
+    public Context context;
+    public DBHelper_toutiao(Context context){
+        super(context,"news.db",null,1);
+        this.context=context;
     }
 
 
