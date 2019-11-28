@@ -40,20 +40,16 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setStatusBar();
         Gson gson =new Gson();
-
-
-        HttpUtil.sendRequestWithOkhttp("http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&", new okhttp3.Callback() {
+        okhttp3.Callback a=new okhttp3.Callback() {
             @Override
-            public void onFailure(Call call, IOException e) {
-
-            }
+            public void onFailure(Call call, IOException e) { }
 
             @Override
             public void onResponse(Call call, Response response) throws IOException {
                 HttpUtil.parseJsonWithJsonObject(response);
             }
-        });
-
+        };
+        HttpUtil.sendRequestWithOkhttp("http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&", a);
 }
 
 
@@ -81,7 +77,6 @@ public class MainActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
-    //解析Json数据
 
 }
 
