@@ -1,12 +1,13 @@
 package com.example.funnews.josnGet;
 
+import com.example.funnews.MyApplication;
+
 import java.io.IOException;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
-import com.example.funnews.josnGet.json_insert;
 
-public class HttpUtil {
+public class HttpUtil{
 
     public static void sendRequestWithOkhttp(String address,okhttp3.Callback callback)
     {
@@ -16,7 +17,8 @@ public class HttpUtil {
     }
     public static void parseJsonWithJsonObject(Response response) throws IOException {
         String responseData=response.body().string();
-
-        json_insert.convertArrayToList(responseData);
+        json_insert j=new json_insert();
+        j.convertArrayToList(responseData);
+        j.initDBbyDatabaseHelper(MyApplication.getGlobalContext());
     }
 }

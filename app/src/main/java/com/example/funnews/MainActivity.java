@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.funnews.josnGet.HttpUtil;
+import com.example.funnews.josnGet.json_insert;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
             }
         };
         HttpUtil.sendRequestWithOkhttp("http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&", a);
-}
+    }
 
 
 

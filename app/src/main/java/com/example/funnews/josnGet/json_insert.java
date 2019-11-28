@@ -16,14 +16,17 @@ public class json_insert {
     private static SQLiteDatabase db;
     //定义数据库管理类的对象
     private static Gson gson;
-    private DBHelper_toutiao helper;
-    public json_insert(Context context){
-        helper =new DBHelper_toutiao(context);
-        db =helper.getWritableDatabase();
+    private DBHelper_toutiao dbHelper;
+
+
+    public void initDBbyDatabaseHelper(Context context) {
+        dbHelper =new DBHelper_toutiao(context);
+        db =dbHelper.getWritableDatabase();
     }
 
+
     //往数据库中写入数据
-    public static void convertArrayToList(String json) {
+    public void convertArrayToList(String json) {
 
         //得到集合对应的具体类型
         Type type = new TypeToken<List<toutiao>>(){}
@@ -56,7 +59,7 @@ public class json_insert {
         }
     }
     //从数据库中调出数据
-    public static void toutiao_query() {
+    public void toutiao_query() {
 
         Cursor cursor =db.query("countinfo",null,null,null,null,null,null);
         //遍历Cursor
