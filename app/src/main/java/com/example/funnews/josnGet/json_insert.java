@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
@@ -15,7 +16,7 @@ public class json_insert {
 
     private static SQLiteDatabase db;
     //定义数据库管理类的对象
-    private static Gson gson;
+    private static Gson gson=new Gson();
     private DBHelper_toutiao dbHelper;
 
 
@@ -32,8 +33,7 @@ public class json_insert {
         Type type = new TypeToken<List<toutiao>>(){}
                 .getType();
         //反序列化 添加数据
-        List<toutiao> ti = gson.fromJson(json, type);
-
+        List<toutiao> ti = gson.fromJson(json,type);
         for(int i=0;i< ti.size();i++){
             ContentValues cv =new ContentValues();
             String uniquekey = ti.get(i).getUniquekey();
