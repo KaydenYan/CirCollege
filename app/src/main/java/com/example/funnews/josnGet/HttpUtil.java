@@ -18,7 +18,7 @@ public class HttpUtil{
     public static void parseJsonWithJsonObject(Response response) throws IOException {
         String responseData=response.body().string();
         json_insert j=new json_insert();
-        j.convertArrayToList(responseData);
         j.initDBbyDatabaseHelper(MyApplication.getGlobalContext());
+        j.convertArrayToList(responseData);
     }
 }
