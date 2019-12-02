@@ -8,7 +8,30 @@
     <!--
     android:fitsSystemWindows="true"使最上面的内容不与状态栏重叠
     -->
+    <TextView
+        android:id="@+id/signupText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="50dp"
+        android:text="注册"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.10"
+        app:layout_constraintVertical_bias="0.20"/>
 
 
-
+    <ImageView
+        android:layout_width="128px"
+        android:layout_height="128px"
+        android:layout_centerVertical="true"
+        android:scaleType="centerInside"
+        android:src="@drawable/allow"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.826" />
 </android.support.constraint.ConstraintLayout>
