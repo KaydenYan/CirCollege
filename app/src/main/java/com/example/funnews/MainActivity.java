@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         //遍历Cursor
 
         ArrayList<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title from countinfo limit 0,10",new String[0]);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date from countinfo limit 0,10",new String[0]);
         cursor1.moveToFirst();
         int i=0;
         while (!cursor1.isAfterLast()) {
