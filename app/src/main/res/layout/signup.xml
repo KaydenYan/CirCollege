@@ -22,6 +22,183 @@
         app:layout_constraintHorizontal_bias="0.10"
         app:layout_constraintVertical_bias="0.20"/>
 
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="0dp"
+        android:id="@+id/usred1"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintVertical_bias="0.423"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintWidth_percent="0.80">
+
+        <TextView
+            android:id="@+id/usrnameTe1"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.30"
+            android:layout_height="wrap_content"
+            android:text="用户名"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintWidth_percent="0.70"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/usrnameTe1"
+            app:layout_constraintLeft_toRightOf="@id/usrnameTe1"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/usrerr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/colorTheme"
+        android:textSize="12dp"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usred1" />
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="0dp"
+        android:id="@+id/psded2"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/usrerr"
+        app:layout_constraintWidth_percent="0.80">
+
+        <TextView
+            android:id="@+id/psdnameTe2"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.30"
+            android:layout_height="wrap_content"
+            android:text="密码"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintWidth_percent="0.70"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/psdnameTe2"
+            app:layout_constraintLeft_toRightOf="@id/psdnameTe2"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="0dp"
+        android:id="@+id/psded3"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/psded2"
+        app:layout_constraintWidth_percent="0.80">
+
+        <TextView
+            android:id="@+id/psdnameTe3"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.30"
+            android:layout_height="wrap_content"
+            android:text="确认密码"
+            android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintWidth_percent="0.70"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/psdnameTe3"
+            app:layout_constraintLeft_toRightOf="@id/psdnameTe3"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/psderr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/colorTheme"
+        android:textSize="12dp"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/psded3" />
+
+    <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="0dp"
+        android:id="@+id/yzmed"
+        android:layout_height="wrap_content"
+        app:layout_constraintHorizontal_bias="0.378"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/psderr"
+        app:layout_constraintWidth_percent="0.80">
+
+        <TextView
+            android:id="@+id/yzmTe"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.30"
+            android:layout_height="wrap_content"
+            android:text="短信验证码"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/yzmhq"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintWidth_percent="0.40"
+            android:textColor="@color/black"
+            android:textSize="17dp"
+            app:layout_constraintBaseline_toBaselineOf="@id/yzmTe"
+            app:layout_constraintLeft_toRightOf="@id/yzmTe"
+            app:layout_constraintTop_toTopOf="parent" />
+        <TextView
+            android:id="@+id/yzm"
+            android:layout_width="0dp"
+            app:layout_constraintWidth_percent="0.30"
+            android:layout_height="wrap_content"
+            android:text="获取验证码"
+            android:textColor="@color/black"
+            android:textSize="18dp"
+            app:layout_constraintLeft_toRightOf="@id/yzmhq"
+            app:layout_constraintTop_toTopOf="parent" />
+    </android.support.constraint.ConstraintLayout>
+    <TextView
+        android:id="@+id/yzmerr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:textColor="@color/colorTheme"
+        android:textSize="12dp"
+        app:layout_constraintHorizontal_bias="0.15"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/yzmed" />
+
 
     <ImageView
         android:layout_width="128px"
@@ -33,5 +210,6 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.826" />
+        app:layout_constraintVertical_bias="0.826"/>
+
 </android.support.constraint.ConstraintLayout>
