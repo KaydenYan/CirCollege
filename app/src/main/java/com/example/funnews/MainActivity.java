@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadMoreData() {
         List<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title from countinfo limit 10,30",new String[0]);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date from countinfo limit 10,30",new String[0]);
         cursor1.moveToFirst();
 
         while (!cursor1.isAfterLast()) {
@@ -146,9 +146,6 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 cv.put("thumbnail_pic_s02", (String) null);
             }
-
-
-
 
             if(list.getJSONObject(i).has("thumbnail_pic_s03")){
                 String thumbnail_pic_s03 = list.getJSONObject(i).getString("thumbnail_pic_s03");
@@ -234,7 +231,7 @@ public class MainActivity extends AppCompatActivity {
                 srl.setOnLoadMoreListener(new OnLoadMoreListener() {
                     @Override
                     public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                        if(finalToutiaos1.size() > 40){
+                        if(finalToutiaos1.size() > 30){
                             srl.finishLoadMoreWithNoMoreData();
 
                         }else {
