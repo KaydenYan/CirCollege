@@ -10,17 +10,16 @@ import android.widget.TextView;
 import com.example.funnews.josnGet.toutiao;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class MyAdapter extends BaseAdapter {
 
 
-    private List<toutiao> toutiaos ;
+    private ArrayList<toutiao> toutiaos ;
     private Context context;
     private int itemLayout;
 
-    public MyAdapter(Context context, List<toutiao> toutiaos , int itemLayout) {
-        List<toutiao> toutiaos1 =new ArrayList<>();
+    public MyAdapter(Context context, ArrayList<toutiao> toutiaos , int itemLayout) {
+
         this.toutiaos= toutiaos;
         this.context = context;
         this.itemLayout = itemLayout;

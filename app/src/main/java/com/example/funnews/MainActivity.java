@@ -37,7 +37,8 @@ import okhttp3.Response;
 
 public class MainActivity extends AppCompatActivity {
 
-    private List<toutiao> toutiaos;
+    //private List<toutiao> toutiaos;
+    private ArrayList<toutiao> toutiaos ;
     private ListView newsList;
     private MyAdapter adapter;
     private SmartRefreshLayout srl;
@@ -52,9 +53,9 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setStatusBar();
+        toutiaos=new ArrayList<toutiao>();
         abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
         sendRequestWithOkHttp(abc);
-
         //初始化数据
         newsList =findViewById(R.id.newsList);
         adapter = new MyAdapter(this,toutiaos,R.layout.newsitems);
@@ -86,10 +87,10 @@ public class MainActivity extends AppCompatActivity {
         adapter.notifyDataSetChanged();
     }
 
-    private List<toutiao> initData() {
+    private ArrayList<toutiao> initData() {
         //遍历Cursor
 
-        List<toutiao> tt=new ArrayList<>();
+        ArrayList<toutiao> tt=new ArrayList<>();
         Cursor cursor1 =db.rawQuery("select author_name,title from countinfo limit 0,10",new String[0]);
         cursor1.moveToFirst();
         int i=0;
@@ -138,18 +139,19 @@ public class MainActivity extends AppCompatActivity {
             String thumbnail_pic_s = list.getJSONObject(i).getString("thumbnail_pic_s");
             cv.put("thumbnail_pic_s",thumbnail_pic_s);
 
-            String thumbnail_pic_s02 = list.getJSONObject(i).getString("thumbnail_pic_s02");
-            Log.e("ggg3",thumbnail_pic_s02);
-            if(thumbnail_pic_s02 !=null){
+
+            if(list.getJSONObject(i).has("thumbnail_pic_s02")){
+                String thumbnail_pic_s02 = list.getJSONObject(i).getString("thumbnail_pic_s02");
                 cv.put("thumbnail_pic_s02",thumbnail_pic_s02);
             }else{
                 cv.put("thumbnail_pic_s02", (String) null);
             }
 
 
-            String thumbnail_pic_s03 = list.getJSONObject(i).getString("thumbnail_pic_s03");
-            Log.e("ggg",thumbnail_pic_s03);
-            if(thumbnail_pic_s03!=null){
+
+
+            if(list.getJSONObject(i).has("thumbnail_pic_s03")){
+                String thumbnail_pic_s03 = list.getJSONObject(i).getString("thumbnail_pic_s03");
                 cv.put("thumbnail_pic_s03",thumbnail_pic_s03);
             }else{
                 cv.put("thumbnail_pic_s03", (String) null);
@@ -193,7 +195,7 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                List<toutiao> toutiaos =new ArrayList<>();
+                //List<toutiao> toutiaos =new ArrayList<>();
                 initDBbyDatabaseHelper();
                 try {
                     convertArrayToList(js);
@@ -201,7 +203,7 @@ public class MainActivity extends AppCompatActivity {
                     e.printStackTrace();
                 }
                 newsList.setAdapter(adapter);
-                final List<toutiao> finalToutiaos = toutiaos;
+                final ArrayList<toutiao> finalToutiaos = toutiaos;
                 newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     @Override
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
