@@ -1,11 +1,13 @@
 package com.example.funnews;
 
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageView;
 
 
 import java.io.IOException;
@@ -22,17 +24,43 @@ public class MainActivity extends AppCompatActivity {
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
     private String abc;
+    private CustomeOnClickListener listener;
+    private ImageView mybio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setStatusBar();
+        getView();
+        registListener();
         abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
         sendRequestWithOkHttp(abc);
     }
 
 
+    public void getView(){
+        mybio = findViewById(R.id.myBtn);
+    }
+    private void registListener(){
+        listener = new CustomeOnClickListener();
+        mybio.setOnClickListener(listener);
+    }
+    class CustomeOnClickListener implements View.OnClickListener {
 
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.myBtn:
+                    Intent intent1 = new Intent(
+                            MainActivity.this,
+                            mybio.class
+                    );
+                    startActivity(intent1);
+                    break;
+
+            }
+        }
+    }
     protected void setStatusBar() {//状态栏沉浸，状态栏颜色，状态栏系统图标的深浅色
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
             View decorView = getWindow().getDecorView();
