@@ -7,39 +7,28 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-import com.example.funnews.josnGet.HttpUtil;
-import com.google.gson.Gson;
-
-
 
 import java.io.IOException;
 
-import okhttp3.Call;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
 import okhttp3.Response;
 
 
 
 public class MainActivity extends AppCompatActivity {
+
+    //V1
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
-    private Gson gson;
-    private final String TAG = MainActivity.class.getSimpleName();
+    private String abc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setStatusBar();
-        Gson gson =new Gson();
-        okhttp3.Callback a=new okhttp3.Callback() {
-            @Override
-            public void onFailure(Call call, IOException e) { }
-
-            @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                HttpUtil.parseJsonWithJsonObject(response);
-            }
-        };
-        HttpUtil.sendRequestWithOkhttp("http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&", a);
+        abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+        sendRequestWithOkHttp(abc);
     }
 
 
@@ -66,6 +55,39 @@ public class MainActivity extends AppCompatActivity {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && useStatusBarColor) {//android6.0以后可以对状态栏文字颜色和图标进行修改
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
+    }
+    private void showResponse(final String js) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+            }
+        });
+    }
+
+    private void sendRequestWithOkHttp(final String ab) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // 创建一个OkHttpClient的实例
+                    OkHttpClient client = new OkHttpClient();
+                    // 如果要发送一条HTTP请求，就需要创建一个Request对象
+                    // 可在最终的build()方法之前连缀很多其他方法来丰富这个Request对象
+                    Request request = new Request.Builder()
+                            .url(ab)
+                            .build();
+                    // 调用OkHttpClient的newCall()方法来创建一个Call对象，并调用execute()方法来发送请求并获取服务器的返回数据
+                    Response response = client.newCall(request).execute();
+                    // 其中Response对象就是服务器返回的数据，将数据转换成字符串
+                    String responseData = response.body().string();
+                    // 将获取到的字符串传入showResponse()方法中进行UI显示
+                    showResponse(responseData);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        }).start();
     }
 
 
