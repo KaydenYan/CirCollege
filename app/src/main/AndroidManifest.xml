@@ -24,8 +24,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".signup"></activity>
-        <activity android:name=".mybio"></activity>
+        <activity android:name=".RegisterActivity"></activity>
+        <activity android:name=".loginActivity"></activity>
     </application>
 
 </manifest>

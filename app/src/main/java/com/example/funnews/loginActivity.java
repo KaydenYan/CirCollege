@@ -6,7 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
-public class mybio extends AppCompatActivity {
+public class loginActivity extends AppCompatActivity {
     private TextView newusr;
     private CustomeOnClickListener listener;
     @Override
@@ -31,8 +31,8 @@ public class mybio extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.newusr:
                     Intent intent1 = new Intent(
-                            mybio.this,
-                            signup.class
+                            loginActivity.this,
+                            RegisterActivity.class
                     );
                     startActivity(intent1);
                     break;
