@@ -1,6 +1,7 @@
 package com.example.funnews;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
@@ -54,20 +55,19 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setStatusBar();
         toutiaos=new ArrayList<toutiao>();
-        abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+
+        abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=9fe86c01aaab242950dac112dc8b1271&";
         sendRequestWithOkHttp(abc);
         //初始化数据
         newsList =findViewById(R.id.newsList);
         adapter = new MyAdapter(this,toutiaos,R.layout.newsitems);
 
-
-
-
     }
+
 
     private void loadMoreData() {
         List<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date from countinfo limit 10,30",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url from countinfo limit 10,30",null);
         cursor1.moveToFirst();
 
         while (!cursor1.isAfterLast()) {
@@ -75,6 +75,7 @@ public class MainActivity extends AppCompatActivity {
             d.setAuthor_name(cursor1.getString(cursor1.getColumnIndex("author_name")));
             d.setTitle(cursor1.getString(cursor1.getColumnIndex("title")));
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
+            d.setUrl(cursor1.getString(cursor1.getColumnIndex("url")));
             toutiaos.add(d);
             cursor1.moveToNext();
         }
@@ -91,7 +92,7 @@ public class MainActivity extends AppCompatActivity {
         //遍历Cursor
 
         ArrayList<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date from countinfo limit 0,10",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url from countinfo limit 0,10",null);
         cursor1.moveToFirst();
         int i=0;
         while (!cursor1.isAfterLast()) {
@@ -99,6 +100,7 @@ public class MainActivity extends AppCompatActivity {
             d.setAuthor_name(cursor1.getString(cursor1.getColumnIndex("author_name")));
             d.setTitle(cursor1.getString(cursor1.getColumnIndex("title")));
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
+            d.setUrl(cursor1.getString(cursor1.getColumnIndex("url")));
             i=i+1;
             Log.e("TAGxx ----------", i + cursor1.getString(cursor1.getColumnIndex("author_name")));
             toutiaos.add(d);
@@ -241,8 +243,29 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
                 });
+                newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+                    @Override
+                    public void onItemClick(AdapterView<?> arg0, View arg1, int position,
+                                            long arg3) {
+
+                        /**
+                         * 创建一个意图
+                         */
+                        Intent intent = new Intent(MainActivity.this,NewsInfoActivity.class);
+
+                        /**
+                         * 在datas中通过点击的位置position通过get()方法获得具体某个新闻
+                         * 的数据然后通过Intent的putExtra()传递到NewsInfoActivity中
+                         */
+                        intent.putExtra("url", toutiaos.get(position).getUrl());
+                        MainActivity.this.startActivity(intent);//启动Activity
+
+                    }
+                });
             }
         });
+
     }
 
     private void sendRequestWithOkHttp(final String ab) {
@@ -269,7 +292,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
     }
-
 
 }
 
