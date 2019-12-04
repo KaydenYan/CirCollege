@@ -62,12 +62,12 @@ public class MainActivity extends AppCompatActivity {
         newsList =findViewById(R.id.newsList);
         adapter = new MyAdapter(this,toutiaos,R.layout.newsitems);
 
-    }
 
+    }
 
     private void loadMoreData() {
         List<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url from countinfo limit 10,30",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s from countinfo limit 10,30",null);
         cursor1.moveToFirst();
 
         while (!cursor1.isAfterLast()) {
@@ -76,9 +76,11 @@ public class MainActivity extends AppCompatActivity {
             d.setTitle(cursor1.getString(cursor1.getColumnIndex("title")));
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
             d.setUrl(cursor1.getString(cursor1.getColumnIndex("url")));
+            d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
             toutiaos.add(d);
             cursor1.moveToNext();
         }
+
         adapter.notifyDataSetChanged();
     }
 
@@ -92,7 +94,7 @@ public class MainActivity extends AppCompatActivity {
         //遍历Cursor
 
         ArrayList<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url from countinfo limit 0,10",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s from countinfo limit 0,10",null);
         cursor1.moveToFirst();
         int i=0;
         while (!cursor1.isAfterLast()) {
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity {
             d.setTitle(cursor1.getString(cursor1.getColumnIndex("title")));
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
             d.setUrl(cursor1.getString(cursor1.getColumnIndex("url")));
+            d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
             i=i+1;
             Log.e("TAGxx ----------", i + cursor1.getString(cursor1.getColumnIndex("author_name")));
             toutiaos.add(d);
