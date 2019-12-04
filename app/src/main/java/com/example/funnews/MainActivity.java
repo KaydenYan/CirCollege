@@ -45,7 +45,7 @@ public class MainActivity extends AppCompatActivity {
     private SmartRefreshLayout srl;
     private SQLiteDatabase db;
     private DBHelper_toutiao dbHelper;
-    //V1
+    //lwd
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
     private String abc;
