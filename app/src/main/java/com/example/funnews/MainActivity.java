@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadMoreData() {
         List<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date from countinfo limit 10,30",new String[0]);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date from countinfo limit 10,30",null);
         cursor1.moveToFirst();
 
         while (!cursor1.isAfterLast()) {
@@ -91,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         //遍历Cursor
 
         ArrayList<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date from countinfo limit 0,10",new String[0]);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date from countinfo limit 0,10",null);
         cursor1.moveToFirst();
         int i=0;
         while (!cursor1.isAfterLast()) {
@@ -101,11 +101,11 @@ public class MainActivity extends AppCompatActivity {
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
             i=i+1;
             Log.e("TAGxx ----------", i + cursor1.getString(cursor1.getColumnIndex("author_name")));
-            tt.add(d);
+            toutiaos.add(d);
             cursor1.moveToNext();
         }
 
-        return tt;
+        return toutiaos;
     }
 
 

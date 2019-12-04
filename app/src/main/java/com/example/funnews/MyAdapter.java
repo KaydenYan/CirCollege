@@ -66,8 +66,8 @@ public class MyAdapter extends BaseAdapter {
         }
 
         toutiao stu = toutiaos.get(position);
-        holder.itemTitle.setText(stu.getAuthor_name());
-        holder.itemAuthor.setText(stu.getTitle());
+        holder.itemTitle.setText(stu.getTitle());
+        holder.itemAuthor.setText(stu.getAuthor_name());
         holder.itemDate.setText(stu.getDate());
 
         return convertView;
