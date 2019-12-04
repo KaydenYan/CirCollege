@@ -43,20 +43,17 @@ public class MainActivity extends AppCompatActivity {
 
     //master
 
-    //private List<toutiao> toutiaos;
     private ArrayList<toutiao> toutiaos ;
     private ListView newsList;
     private MyAdapter adapter;
     private SmartRefreshLayout srl;
     private SQLiteDatabase db;
     private DBHelper_toutiao dbHelper;
-    //V1
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
     private String abc;
     private CustomeOnClickListener listener;
     private ImageView mybio;
-    private String abc;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,16 +74,20 @@ public class MainActivity extends AppCompatActivity {
         mybio.setOnClickListener(listener);
     }
     class CustomeOnClickListener implements View.OnClickListener {
-        toutiaos=new ArrayList<toutiao>();
-        abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
-        sendRequestWithOkHttp(abc);
-        //初始化数据
-        newsList =findViewById(R.id.newsList);
-        adapter = new MyAdapter(this,toutiaos,R.layout.newsitems);
 
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.myBtn:
+                    Intent intent1 = new Intent(
+                            MainActivity.this,
+                            loginActivity.class
+                    );
+                    startActivity(intent1);
+                    break;
 
-
-
+            }
+        }
     }
 
     private void loadMoreData() {
@@ -134,17 +135,6 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        @Override
-        public void onClick(View v) {
-            switch (v.getId()){
-                case R.id.myBtn:
-                    Intent intent1 = new Intent(
-                            MainActivity.this,
-                            loginActivity.class
-                    );
-                    startActivity(intent1);
-                    break;
-
     private void convertArrayToList (String js) throws JSONException{
         JSONObject demoJson =new JSONObject(js);
         JSONObject result =demoJson.getJSONObject("result");
@@ -181,7 +171,6 @@ public class MainActivity extends AppCompatActivity {
             }else{
                 cv.put("thumbnail_pic_s02", (String) null);
             }
-        }
 
             if(list.getJSONObject(i).has("thumbnail_pic_s03")){
                 String thumbnail_pic_s03 = list.getJSONObject(i).getString("thumbnail_pic_s03");
@@ -190,7 +179,6 @@ public class MainActivity extends AppCompatActivity {
                 cv.put("thumbnail_pic_s03", (String) null);
             }
             db.insert("countinfo",null,cv);
-
         }
 
     }
@@ -224,39 +212,7 @@ public class MainActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
-    private void showResponse(final String js) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
 
-            }
-        });
-    }
-
-    private void sendRequestWithOkHttp(final String ab) {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    // 创建一个OkHttpClient的实例
-                    OkHttpClient client = new OkHttpClient();
-                    // 如果要发送一条HTTP请求，就需要创建一个Request对象
-                    // 可在最终的build()方法之前连缀很多其他方法来丰富这个Request对象
-                    Request request = new Request.Builder()
-                            .url(ab)
-                            .build();
-                    // 调用OkHttpClient的newCall()方法来创建一个Call对象，并调用execute()方法来发送请求并获取服务器的返回数据
-                    Response response = client.newCall(request).execute();
-                    // 其中Response对象就是服务器返回的数据，将数据转换成字符串
-                    String responseData = response.body().string();
-                    // 将获取到的字符串传入showResponse()方法中进行UI显示
-                    showResponse(responseData);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }).start();
-    }
     private void showResponse(final String js) {
         runOnUiThread(new Runnable() {
             @Override
