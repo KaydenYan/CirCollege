@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
         getView();
         registListener();
         toutiaos=new ArrayList<toutiao>();
-        abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+        abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=9fe86c01aaab242950dac112dc8b1271&";
         sendRequestWithOkHttp(abc);
         newsList =findViewById(R.id.newsList);
         adapter = new MyAdapter(this,toutiaos,R.layout.newsitems);
@@ -82,11 +82,13 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.myBtn:
-                    Intent intent1 = new Intent(
+                    /*Intent intent1 = new Intent(
                             MainActivity.this,
                             loginActivity.class
                     );
-                    startActivity(intent1);
+                    startActivity(intent1);*/
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=9fe86c01aaab242950dac112dc8b1271&";
+                    sendRequestWithOkHttp(abc);
                     break;
 
             }
@@ -189,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
     private void initDBbyDatabaseHelper() {
         dbHelper =new DBHelper_toutiao(this,"news",null,1);
         db =dbHelper.getWritableDatabase();
+        db.execSQL("DELETE FROM countinfo");
     }
 
 
