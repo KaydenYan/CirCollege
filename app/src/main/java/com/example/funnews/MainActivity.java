@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.myBtn:
                     Intent intent1 = new Intent(
                             MainActivity.this,
-                            mybio.class
+                            loginActivity.class
                     );
                     startActivity(intent1);
                     break;

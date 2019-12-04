@@ -2,8 +2,10 @@
 <android.support.constraint.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    tools:context="com.example.funnews.RegisterActivity"
     android:fitsSystemWindows="true">
     <!--
     android:fitsSystemWindows="true"使最上面的内容不与状态栏重叠
@@ -46,7 +48,7 @@
         app:layout_constraintWidth_percent="0.80">
 
         <TextView
-            android:id="@+id/usrnameTe1"
+            android:id="@+id/tv_registeractivity_username"
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.30"
             android:layout_height="wrap_content"
@@ -57,16 +59,19 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/et_registeractivity_username"
             android:layout_width="0dp"
+            android:hint="请输入用户名"
             android:layout_height="wrap_content"
             app:layout_constraintWidth_percent="0.70"
             android:textColor="@color/black"
             android:textSize="17dp"
-            app:layout_constraintBaseline_toBaselineOf="@id/usrnameTe1"
-            app:layout_constraintLeft_toRightOf="@id/usrnameTe1"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_registeractivity_username"
+            app:layout_constraintLeft_toRightOf="@id/tv_registeractivity_username"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
 
+    <!--    提示用户名输入格式-->
     <TextView
         android:id="@+id/usrerr"
         android:layout_width="wrap_content"
@@ -78,6 +83,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/usred1" />
+
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="0dp"
@@ -90,7 +96,7 @@
         app:layout_constraintWidth_percent="0.80">
 
         <TextView
-            android:id="@+id/psdnameTe2"
+            android:id="@+id/tv_registeractivity_password1"
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.30"
             android:layout_height="wrap_content"
@@ -101,13 +107,16 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/et_registeractivity_password1"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="请输入密码"
             app:layout_constraintWidth_percent="0.70"
             android:textColor="@color/black"
             android:textSize="17dp"
-            app:layout_constraintBaseline_toBaselineOf="@id/psdnameTe2"
-            app:layout_constraintLeft_toRightOf="@id/psdnameTe2"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_registeractivity_password1"
+            app:layout_constraintLeft_toRightOf="@id/tv_registeractivity_password1"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -123,7 +132,7 @@
         app:layout_constraintWidth_percent="0.80">
 
         <TextView
-            android:id="@+id/psdnameTe3"
+            android:id="@+id/tv_registeractivity_password2"
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.30"
             android:layout_height="wrap_content"
@@ -134,15 +143,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/et_registeractivity_password2"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:inputType="textPassword"
+            android:hint="请再次输入密码"
             app:layout_constraintWidth_percent="0.70"
             android:textColor="@color/black"
             android:textSize="17dp"
-            app:layout_constraintBaseline_toBaselineOf="@id/psdnameTe3"
-            app:layout_constraintLeft_toRightOf="@id/psdnameTe3"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_registeractivity_password2"
+            app:layout_constraintLeft_toRightOf="@id/tv_registeractivity_password2"
             app:layout_constraintTop_toTopOf="parent" />
     </android.support.constraint.ConstraintLayout>
+
+<!--    提醒用户密码输入格式-->
     <TextView
         android:id="@+id/psderr"
         android:layout_width="wrap_content"
@@ -154,6 +168,7 @@
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toBottomOf="@id/psded3" />
+
     <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="0dp"
@@ -182,6 +197,7 @@
             app:layout_constraintWidth_percent="0.70"
             android:textColor="@color/black"
             android:textSize="17dp"
+            android:hint="请输入手机号码"
             app:layout_constraintBaseline_toBaselineOf="@id/numTe"
             app:layout_constraintLeft_toRightOf="@id/numTe"
             app:layout_constraintTop_toTopOf="parent" />
@@ -245,6 +261,7 @@
 
 
     <ImageView
+        android:id="@+id/bt_registeractivity_register"
         android:layout_width="128px"
         android:layout_height="128px"
         android:layout_centerVertical="true"
