@@ -1,24 +1,50 @@
 package com.example.funnews;
 
+import android.content.ContentValues;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Build;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.AdapterView;
+import android.widget.ListView;
+import android.widget.Toast;
 
+import com.example.funnews.josnGet.DBHelper_toutiao;
+import com.example.funnews.josnGet.toutiao;
+import com.scwang.smartrefresh.layout.SmartRefreshLayout;
+import com.scwang.smartrefresh.layout.api.RefreshLayout;
+import com.scwang.smartrefresh.layout.listener.OnLoadMoreListener;
+import com.scwang.smartrefresh.layout.listener.OnRefreshListener;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 
 
-
 public class MainActivity extends AppCompatActivity {
 
-    //masterd
+    //private List<toutiao> toutiaos;
+    private ArrayList<toutiao> toutiaos ;
+    private ListView newsList;
+    private MyAdapter adapter;
+    private SmartRefreshLayout srl;
+    private SQLiteDatabase db;
+    private DBHelper_toutiao dbHelper;
+    //V1
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
     private String abc;
@@ -27,10 +53,116 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         setStatusBar();
+        toutiaos=new ArrayList<toutiao>();
         abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
         sendRequestWithOkHttp(abc);
+        //初始化数据
+        newsList =findViewById(R.id.newsList);
+        adapter = new MyAdapter(this,toutiaos,R.layout.newsitems);
+
+
+
+
     }
 
+    private void loadMoreData() {
+        List<toutiao> tt=new ArrayList<>();
+        Cursor cursor1 =db.rawQuery("select author_name,title,date from countinfo limit 10,30",null);
+        cursor1.moveToFirst();
+
+        while (!cursor1.isAfterLast()) {
+            toutiao d=new toutiao();
+            d.setAuthor_name(cursor1.getString(cursor1.getColumnIndex("author_name")));
+            d.setTitle(cursor1.getString(cursor1.getColumnIndex("title")));
+            d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
+            toutiaos.add(d);
+            cursor1.moveToNext();
+        }
+        adapter.notifyDataSetChanged();
+    }
+
+    private void refreshData() {
+        toutiaos.clear();
+        toutiaos.addAll(initData());
+        adapter.notifyDataSetChanged();
+    }
+
+    private ArrayList<toutiao> initData() {
+        //遍历Cursor
+
+        ArrayList<toutiao> tt=new ArrayList<>();
+        Cursor cursor1 =db.rawQuery("select author_name,title,date from countinfo limit 0,10",null);
+        cursor1.moveToFirst();
+        int i=0;
+        while (!cursor1.isAfterLast()) {
+            toutiao d=new toutiao();
+            d.setAuthor_name(cursor1.getString(cursor1.getColumnIndex("author_name")));
+            d.setTitle(cursor1.getString(cursor1.getColumnIndex("title")));
+            d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
+            i=i+1;
+            Log.e("TAGxx ----------", i + cursor1.getString(cursor1.getColumnIndex("author_name")));
+            toutiaos.add(d);
+            cursor1.moveToNext();
+        }
+
+        return toutiaos;
+    }
+
+
+
+    private void convertArrayToList (String js) throws JSONException{
+        JSONObject demoJson =new JSONObject(js);
+        JSONObject result =demoJson.getJSONObject("result");
+        JSONArray list = result.getJSONArray("data");
+
+        for (int i =0;i<list.length();i++){
+            ContentValues cv =new ContentValues();
+
+            String uniquekey =list.getJSONObject(i).getString("uniquekey");
+            cv.put("uniquekey",uniquekey);
+            String title = list.getJSONObject(i).getString("title");
+            cv.put("title",title);
+
+            String date = list.getJSONObject(i).getString("date");
+            cv.put("date",date);
+
+            String category = list.getJSONObject(i).getString("category");
+            cv.put("category",category);
+
+
+            String author_name =list.getJSONObject(i).getString("author_name");
+            cv.put("author_name",author_name);
+
+            String url = list.getJSONObject(i).getString("url");
+            cv.put("url",url);
+
+            String thumbnail_pic_s = list.getJSONObject(i).getString("thumbnail_pic_s");
+            cv.put("thumbnail_pic_s",thumbnail_pic_s);
+
+
+            if(list.getJSONObject(i).has("thumbnail_pic_s02")){
+                String thumbnail_pic_s02 = list.getJSONObject(i).getString("thumbnail_pic_s02");
+                cv.put("thumbnail_pic_s02",thumbnail_pic_s02);
+            }else{
+                cv.put("thumbnail_pic_s02", (String) null);
+            }
+
+            if(list.getJSONObject(i).has("thumbnail_pic_s03")){
+                String thumbnail_pic_s03 = list.getJSONObject(i).getString("thumbnail_pic_s03");
+                cv.put("thumbnail_pic_s03",thumbnail_pic_s03);
+            }else{
+                cv.put("thumbnail_pic_s03", (String) null);
+            }
+            db.insert("countinfo",null,cv);
+
+        }
+
+    }
+
+    private void initDBbyDatabaseHelper() {
+        dbHelper =new DBHelper_toutiao(this,"news",null,1);
+        db =dbHelper.getWritableDatabase();
+    }
 
 
     protected void setStatusBar() {//状态栏沉浸，状态栏颜色，状态栏系统图标的深浅色
@@ -60,7 +192,55 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
+                //List<toutiao> toutiaos =new ArrayList<>();
+                initDBbyDatabaseHelper();
+                try {
+                    convertArrayToList(js);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                newsList.setAdapter(adapter);
+                final ArrayList<toutiao> finalToutiaos = toutiaos;
+                newsList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                        Toast.makeText(
+                                getApplicationContext(),
+                                finalToutiaos.get(position).getAuthor_name(),
+                                Toast.LENGTH_SHORT
+                        ).show();
+                    }
+                });
+                toutiaos = initData();
 
+                srl = findViewById(R.id.srl);
+//        srl.setRefreshHeader(new FunGameBattleCityHeader(this));
+//        srl.setRefreshFooter(new ClassicsFooter(this).setSpinnerStyle(SpinnerStyle.Scale));
+                srl.setReboundDuration(5000);
+
+
+                srl.setOnRefreshListener(new OnRefreshListener() {
+                    @Override
+                    public void onRefresh(@NonNull RefreshLayout refreshLayout) {
+                        refreshData();
+                        srl.finishRefresh();
+
+                    }
+                });
+                final List<toutiao> finalToutiaos1 = toutiaos;
+                srl.setOnLoadMoreListener(new OnLoadMoreListener() {
+                    @Override
+                    public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
+                        if(finalToutiaos1.size() > 30){
+                            srl.finishLoadMoreWithNoMoreData();
+
+                        }else {
+                            loadMoreData();
+                            srl.finishLoadMore();
+
+                        }
+                    }
+                });
             }
         });
     }
