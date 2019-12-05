@@ -16,6 +16,7 @@ import android.widget.ImageView;
 
 import android.widget.AdapterView;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.funnews.josnGet.DBHelper_toutiao;
@@ -45,6 +46,16 @@ public class MainActivity extends AppCompatActivity {
     private ArrayList<toutiao> toutiaos ;
     private ListView newsList;
     private MyAdapter adapter;
+    private TextView top;
+    private TextView shehui;
+    private TextView guonei;
+    private TextView guoji;
+    private TextView yule;
+    private TextView tiyu;
+    private TextView junshi;
+    private TextView keji;
+    private TextView caijing;
+    private TextView shishang;
     private SmartRefreshLayout srl;
     private SQLiteDatabase db;
     private DBHelper_toutiao dbHelper;
@@ -61,8 +72,7 @@ public class MainActivity extends AppCompatActivity {
         getView();
         registListener();
         toutiaos=new ArrayList<toutiao>();
-
-        abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=9fe86c01aaab242950dac112dc8b1271&";
+        abc="http://v.juhe.cn/toutiao/index?dtype=&type=top&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
         sendRequestWithOkHttp(abc);
         newsList =findViewById(R.id.newsList);
         adapter = new MyAdapter(this,toutiaos,R.layout.newsitems);
@@ -70,27 +80,75 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getView(){
-        mybio = findViewById(R.id.myBtn);
+        top=findViewById(R.id.top);
+        shehui=findViewById(R.id.shehui);
+        guonei=findViewById(R.id.guonei);
+        guoji=findViewById(R.id.guoji);
+        yule=findViewById(R.id.yule);
+        tiyu=findViewById(R.id.tiyu);
+        junshi=findViewById(R.id.junshi);
+        keji=findViewById(R.id.keji);
+        caijing=findViewById(R.id.caijing);
+        shishang=findViewById(R.id.shishang);
     }
     private void registListener(){
         listener = new CustomeOnClickListener();
-        mybio.setOnClickListener(listener);
+        top.setOnClickListener(listener);
+        shehui.setOnClickListener(listener);
+        guonei.setOnClickListener(listener);
+        guoji.setOnClickListener(listener);
+        yule.setOnClickListener(listener);
+        tiyu.setOnClickListener(listener);
+        junshi.setOnClickListener(listener);
+        keji.setOnClickListener(listener);
+        caijing.setOnClickListener(listener);
+        shishang.setOnClickListener(listener);
     }
     class CustomeOnClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.myBtn:
-                    /*Intent intent1 = new Intent(
-                            MainActivity.this,
-                            loginActivity.class
-                    );
-                    startActivity(intent1);*/
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=9fe86c01aaab242950dac112dc8b1271&";
+                case R.id.top:
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=top&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
-
+                case R.id.shehui:
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=shehui&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    sendRequestWithOkHttp(abc);
+                    break;
+                case R.id.guonei:
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=guonei&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    sendRequestWithOkHttp(abc);
+                    break;
+                case R.id.guoji:
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=guoji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    sendRequestWithOkHttp(abc);
+                    break;
+                case R.id.yule:
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    sendRequestWithOkHttp(abc);
+                    break;
+                case R.id.tiyu:
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=tiyu&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    sendRequestWithOkHttp(abc);
+                    break;
+                case R.id.junshi:
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=junshi&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    sendRequestWithOkHttp(abc);
+                    break;
+                case R.id.keji:
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    sendRequestWithOkHttp(abc);
+                    break;
+                case R.id.caijing:
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=caijing&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    sendRequestWithOkHttp(abc);
+                    break;
+                case R.id.shishang:
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=shishang&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    sendRequestWithOkHttp(abc);
+                    break;
             }
         }
     }
@@ -253,6 +311,7 @@ public class MainActivity extends AppCompatActivity {
 //        srl.setRefreshFooter(new ClassicsFooter(this).setSpinnerStyle(SpinnerStyle.Scale));
                 srl.setReboundDuration(500);
                 srl.setEnableScrollContentWhenLoaded(true);
+                srl.autoRefresh();
 
 
                 srl.setOnRefreshListener(new OnRefreshListener() {
