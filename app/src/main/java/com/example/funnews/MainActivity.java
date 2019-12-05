@@ -38,7 +38,6 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
-
 public class MainActivity extends AppCompatActivity {
 
     //master
@@ -62,7 +61,8 @@ public class MainActivity extends AppCompatActivity {
         getView();
         registListener();
         toutiaos=new ArrayList<toutiao>();
-        abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+
+        abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=9fe86c01aaab242950dac112dc8b1271&";
         sendRequestWithOkHttp(abc);
         newsList =findViewById(R.id.newsList);
         adapter = new MyAdapter(this,toutiaos,R.layout.newsitems);
@@ -97,7 +97,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void loadMoreData() {
         List<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url from countinfo limit 10,30",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s from countinfo limit 10,30",null);
         cursor1.moveToFirst();
 
         while (!cursor1.isAfterLast()) {
@@ -106,6 +106,7 @@ public class MainActivity extends AppCompatActivity {
             d.setTitle(cursor1.getString(cursor1.getColumnIndex("title")));
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
             d.setUrl(cursor1.getString(cursor1.getColumnIndex("url")));
+            d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
             toutiaos.add(d);
             cursor1.moveToNext();
         }
@@ -122,7 +123,7 @@ public class MainActivity extends AppCompatActivity {
         //遍历Cursor
 
         ArrayList<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url from countinfo limit 0,10",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s from countinfo limit 0,10",null);
         cursor1.moveToFirst();
         int i=0;
         while (!cursor1.isAfterLast()) {
@@ -131,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
             d.setTitle(cursor1.getString(cursor1.getColumnIndex("title")));
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
             d.setUrl(cursor1.getString(cursor1.getColumnIndex("url")));
+            d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
             i=i+1;
             Log.e("TAGxx ----------", i + cursor1.getString(cursor1.getColumnIndex("author_name")));
             toutiaos.add(d);
@@ -297,6 +299,7 @@ public class MainActivity extends AppCompatActivity {
                 });
             }
         });
+
     }
 
     private void sendRequestWithOkHttp(final String ab) {
@@ -323,7 +326,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
     }
-
 
 }
 
