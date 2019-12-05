@@ -264,7 +264,7 @@ public class MainActivity extends AppCompatActivity {
                 srl.setOnLoadMoreListener(new OnLoadMoreListener() {
                     @Override
                     public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                        if(finalToutiaos1.size() > 30){
+                        if(finalToutiaos1.size() >= 30){
                             srl.finishLoadMoreWithNoMoreData();
 
                         }else {
