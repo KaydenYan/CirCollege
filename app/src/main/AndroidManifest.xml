@@ -26,6 +26,8 @@
         </activity>
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".loginActivity"></activity>
+        <activity android:name=".UsrBio"></activity>
+
     </application>
 
 </manifest>
