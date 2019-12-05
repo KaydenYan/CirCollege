@@ -87,7 +87,7 @@ public class MainActivity extends AppCompatActivity {
                             loginActivity.class
                     );
                     startActivity(intent1);*/
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=9fe86c01aaab242950dac112dc8b1271&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
 
@@ -249,7 +249,8 @@ public class MainActivity extends AppCompatActivity {
                 srl = findViewById(R.id.srl);
 //        srl.setRefreshHeader(new FunGameBattleCityHeader(this));
 //        srl.setRefreshFooter(new ClassicsFooter(this).setSpinnerStyle(SpinnerStyle.Scale));
-                srl.setReboundDuration(5000);
+                srl.setReboundDuration(500);
+                srl.setEnableScrollContentWhenLoaded(true);
 
 
                 srl.setOnRefreshListener(new OnRefreshListener() {
