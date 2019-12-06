@@ -1,7 +1,10 @@
 package com.example.funnews.josnGet;
 
+import java.util.ArrayList;
+
 public class toutiao {
 
+    public static toutiao.result result;
     private String uniquekey;
     private String title;
     private String date;
@@ -11,6 +14,7 @@ public class toutiao {
     private String thumbnail_pic_s;
     private String thumbnail_pic_s02;
     private String thumbnail_pic_s03;
+    private ArrayList<toutiao> toutiaos;
 
     public String getUniquekey() {
         return uniquekey;
@@ -83,6 +87,9 @@ public class toutiao {
     public void setThumbnail_pic_s03(String thumbnail_pic_s03) {
         this.thumbnail_pic_s03 = thumbnail_pic_s03;
     }
+    public ArrayList<toutiao> getToutiaos(){
+        return toutiaos; 
+    }
     public String toString (){
         return
                 "uniquekey='"+uniquekey+'\''+'\n'+
@@ -94,6 +101,39 @@ public class toutiao {
                         "thumbnail_pic_s='" +thumbnail_pic_s+'\''+'\n'+
                         "thumbnail_pic_s02='" +thumbnail_pic_s02+'\''+'\n'+
                         "thumbnail_pic_s03='" +thumbnail_pic_s03+'\''+'\n';
+    }
+
+
+    class result{
+        private int type;
+        private String title;
+        private String date;
+        private String author_name;
+        private String thumbnail_pic_s;
+        private String thumbnail_pic_s02;
+        private String thumbnail_pic_s03;
+        public int getType(){
+            return type;
+        }
+        public String getTitle(){
+            return title;
+        }
+        public String getThumbnail_pic_s(){
+            return thumbnail_pic_s;
+        }
+        public String getThumbnail_pic_s02(){
+            return thumbnail_pic_s02;
+        }
+        public String getThumbnail_pic_s03(){
+            return thumbnail_pic_s03;
+        }
+        public String getDate(){
+            return date;
+        }
+        public String getAuthor_name(){
+            return author_name;
+        }
+
     }
 
 

@@ -60,14 +60,14 @@ public class MainActivity extends AppCompatActivity {
         sendRequestWithOkHttp(abc);
         //初始化数据
         newsList =findViewById(R.id.newsList);
-        adapter = new MyAdapter(this,toutiaos,R.layout.newsitems);
+        adapter = new MyAdapter(this,toutiaos);
 
 
     }
 
     private void loadMoreData() {
         List<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s from countinfo limit 10,30",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03 from countinfo limit 10,20",null);
         cursor1.moveToFirst();
 
         while (!cursor1.isAfterLast()) {
@@ -77,6 +77,8 @@ public class MainActivity extends AppCompatActivity {
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
             d.setUrl(cursor1.getString(cursor1.getColumnIndex("url")));
             d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
+            d.setThumbnail_pic_s02(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s02")));
+            d.setThumbnail_pic_s03(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s03")));
             toutiaos.add(d);
             cursor1.moveToNext();
         }
@@ -94,7 +96,7 @@ public class MainActivity extends AppCompatActivity {
         //遍历Cursor
 
         ArrayList<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s from countinfo limit 0,10",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03 from countinfo limit 0,10",null);
         cursor1.moveToFirst();
         int i=0;
         while (!cursor1.isAfterLast()) {
@@ -104,6 +106,8 @@ public class MainActivity extends AppCompatActivity {
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
             d.setUrl(cursor1.getString(cursor1.getColumnIndex("url")));
             d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
+            d.setThumbnail_pic_s02(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s02")));
+            d.setThumbnail_pic_s03(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s03")));
             i=i+1;
             Log.e("TAGxx ----------", i + cursor1.getString(cursor1.getColumnIndex("author_name")));
             toutiaos.add(d);
@@ -236,7 +240,7 @@ public class MainActivity extends AppCompatActivity {
                 srl.setOnLoadMoreListener(new OnLoadMoreListener() {
                     @Override
                     public void onLoadMore(@NonNull RefreshLayout refreshLayout) {
-                        if(finalToutiaos1.size() > 30){
+                        if(finalToutiaos1.size() >= 30){
                             srl.finishLoadMoreWithNoMoreData();
 
                         }else {
