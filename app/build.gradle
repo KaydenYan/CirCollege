@@ -32,4 +32,5 @@ dependencies {
     implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.0-andx-15'
     implementation 'com.github.bumptech.glide:glide:4.9.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.5.0'
+    api 'com.tencent.tbs.tbssdk:sdk:43697'
 }

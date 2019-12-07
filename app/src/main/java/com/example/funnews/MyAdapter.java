@@ -152,6 +152,7 @@ public class MyAdapter extends BaseAdapter {
         return convertView;
     }
 
+
     private void initViews(toutiao toutiaos, ViewHolder holder) {//初始化数据
 
         holder.itemImg.setTag(toutiaos.getThumbnail_pic_s());

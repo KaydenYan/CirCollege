@@ -10,7 +10,7 @@ import android.widget.ImageView;
 public class NewsInfoActivity extends AppCompatActivity {
 
 
-    private WebView webView;
+    private com.tencent.smtt.sdk.WebView webView;
     private ImageView likeBtn;
 
     @Override
@@ -18,7 +18,7 @@ public class NewsInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_news_info);
         initViews();
-        likeBtn = findViewById(R.id.likeBtn);
+
 
     }
 
@@ -28,7 +28,7 @@ public class NewsInfoActivity extends AppCompatActivity {
 
     public void initViews(){
 
-        webView = (WebView)findViewById(R.id.wv_content);
+        webView = findViewById(R.id.wv_content);
 
         /**
          * 获得传递过来的数据

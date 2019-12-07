@@ -56,6 +56,10 @@ public class MainActivity extends AppCompatActivity {
         setStatusBar();
         toutiaos=new ArrayList<toutiao>();
 
+        com.tencent.smtt.sdk.WebView webView = new com.tencent.smtt.sdk.WebView(this);
+
+        int width = webView.getView().getWidth();
+
         abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=9fe86c01aaab242950dac112dc8b1271&";
         sendRequestWithOkHttp(abc);
         //初始化数据

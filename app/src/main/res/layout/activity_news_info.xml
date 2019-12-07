@@ -23,14 +23,14 @@
 
     </LinearLayout>
 
-    <WebView
+    <com.tencent.smtt.sdk.WebView
         android:id="@+id/wv_content"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintHeight_percent="0.85"
-        app:layout_constraintTop_toBottomOf="@id/newsTitle"
         app:layout_constraintLeft_toLeftOf="parent"
-        />
+        app:layout_constraintTop_toBottomOf="@id/newsTitle" />
+
     <android.support.constraint.ConstraintLayout
         android:id="@+id/buttomTab"
         android:layout_width="match_parent"
