@@ -13,6 +13,7 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -45,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
     private SmartRefreshLayout srl;
     private SQLiteDatabase db;
     private DBHelper_toutiao dbHelper;
+    private ImageView likeBtn;
+    private CustomeClickListener listener;
     //V1
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         setStatusBar();
         toutiaos=new ArrayList<toutiao>();
-
+        likeBtn =findViewById(R.id.likeBtn);
         com.tencent.smtt.sdk.WebView webView = new com.tencent.smtt.sdk.WebView(this);
 
         int width = webView.getView().getWidth();
@@ -64,9 +67,36 @@ public class MainActivity extends AppCompatActivity {
         sendRequestWithOkHttp(abc);
         //初始化数据
         newsList =findViewById(R.id.newsList);
+
         adapter = new MyAdapter(this,toutiaos);
+        getViews();
+        registerListeners();
 
+    }
 
+    private void registerListeners() {
+        listener =new CustomeClickListener();
+        likeBtn.setOnClickListener(listener);
+    }
+
+    private void getViews() {
+        likeBtn =findViewById(R.id.likeBtn);
+    }
+
+    public class CustomeClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.likeBtn:
+                    Intent intent =new Intent();
+                    intent.setClass(
+                            MainActivity.this,sss.class
+                    );
+                    startActivity(intent);
+                    break;
+            }
+        }
     }
 
     private void loadMoreData() {
@@ -201,6 +231,8 @@ public class MainActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
+
+
     private void showResponse(final String js) {
         runOnUiThread(new Runnable() {
             @Override
@@ -269,15 +301,25 @@ public class MainActivity extends AppCompatActivity {
                          * 在datas中通过点击的位置position通过get()方法获得具体某个新闻
                          * 的数据然后通过Intent的putExtra()传递到NewsInfoActivity中
                          */
+
                         intent.putExtra("url", toutiaos.get(position).getUrl());
+                        intent.putExtra("title",toutiaos.get(position).getTitle());
+                        intent.putExtra("author_name",toutiaos.get(position).getAuthor_name());
+                        intent.putExtra("date",toutiaos.get(position).getDate());
+                        intent.putExtra("thumbnail_pic_s",toutiaos.get(position).getThumbnail_pic_s());
+                        intent.putExtra("thumbnail_pic_s02",toutiaos.get(position).getThumbnail_pic_s02());
+                        intent.putExtra("thumbnail_pic_s03",toutiaos.get(position).getThumbnail_pic_s03());
                         MainActivity.this.startActivity(intent);//启动Activity
+
 
                     }
                 });
+
             }
         });
 
     }
+
 
     private void sendRequestWithOkHttp(final String ab) {
         new Thread(new Runnable() {

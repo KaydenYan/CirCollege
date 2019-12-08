@@ -28,6 +28,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewsInfoActivity"></activity>
+        <activity android:name=".sss"></activity>
     </application>
 
 </manifest>
