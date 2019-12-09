@@ -104,48 +104,80 @@ public class MainActivity extends AppCompatActivity {
         caijing.setOnClickListener(listener);
         shishang.setOnClickListener(listener);
     }
+    private void settext(){
+        top.setTextColor(getResources().getColor(R.color.black));
+        shehui.setTextColor(getResources().getColor(R.color.black));
+        guonei.setTextColor(getResources().getColor(R.color.black));
+        guoji.setTextColor(getResources().getColor(R.color.black));
+        yule.setTextColor(getResources().getColor(R.color.black));
+        tiyu.setTextColor(getResources().getColor(R.color.black));
+        junshi.setTextColor(getResources().getColor(R.color.black));
+        keji.setTextColor(getResources().getColor(R.color.black));
+        caijing.setTextColor(getResources().getColor(R.color.black));
+        shishang.setTextColor(getResources().getColor(R.color.black));
+    }
     class CustomeOnClickListener implements View.OnClickListener {
 
         @Override
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.top:
+                    settext();
+                    top.setTextColor(getResources().getColor(R.color.colorTheme));
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=top&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.shehui:
+                    settext();
+                    shehui.setTextColor(getResources().getColor(R.color.colorTheme));
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=shehui&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.guonei:
+                    settext();
+                    guonei.setTextColor(getResources().getColor(R.color.colorTheme));
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=guonei&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.guoji:
+                    settext();
+                    guoji.setTextColor(getResources().getColor(R.color.colorTheme));
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=guoji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.yule:
+                    settext();
+                    yule.setTextColor(getResources().getColor(R.color.colorTheme));
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.tiyu:
+                    settext();
+                    tiyu.setTextColor(getResources().getColor(R.color.colorTheme));
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=tiyu&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.junshi:
+                    settext();
+                    junshi.setTextColor(getResources().getColor(R.color.colorTheme));
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=junshi&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.keji:
+                    settext();
+                    keji.setTextColor(getResources().getColor(R.color.colorTheme));
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.caijing:
+                    settext();
+                    caijing.setTextColor(getResources().getColor(R.color.colorTheme));
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=caijing&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.shishang:
+                    settext();
+                    shishang.setTextColor(getResources().getColor(R.color.colorTheme));
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=shishang&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;

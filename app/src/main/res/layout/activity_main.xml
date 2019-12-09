@@ -36,6 +36,7 @@
                 android:textSize="25sp"
                 android:gravity="center"
                 android:id="@+id/top"
+                android:textColor="@color/colorTheme"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toLeftOf="@+id/shehui"
                 />
