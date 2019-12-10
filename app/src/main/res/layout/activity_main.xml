@@ -45,6 +45,7 @@
                 android:layout_height="40dp"
                 android:text="社会"
                 android:textSize="25sp"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:id="@+id/shehui"
                 app:layout_constraintLeft_toRightOf="@+id/top"
@@ -57,6 +58,7 @@
                 android:textSize="25sp"
                 android:gravity="center"
                 android:id="@+id/guonei"
+                android:textColor="@color/black"
                 app:layout_constraintLeft_toRightOf="@+id/shehui"
                 app:layout_constraintRight_toLeftOf="@+id/guoji"
                 />
@@ -65,6 +67,7 @@
                 android:layout_height="40dp"
                 android:text="国际"
                 android:textSize="25sp"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:id="@+id/guoji"
                 app:layout_constraintLeft_toRightOf="@+id/guonei"
@@ -73,6 +76,7 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="娱乐"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:gravity="center"
                 android:id="@+id/yule"
@@ -84,6 +88,7 @@
                 android:layout_height="40dp"
                 android:text="体育"
                 android:textSize="25sp"
+                android:textColor="@color/black"
                 android:gravity="center"
                 android:id="@+id/tiyu"
                 app:layout_constraintLeft_toRightOf="@+id/yule"
@@ -93,6 +98,7 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="军事"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:gravity="center"
                 android:id="@+id/junshi"
@@ -103,6 +109,7 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="科技"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:gravity="center"
                 android:id="@+id/keji"
@@ -115,6 +122,7 @@
                 android:text="财经"
                 android:textSize="25sp"
                 android:gravity="center"
+                android:textColor="@color/black"
                 android:id="@+id/caijing"
                 app:layout_constraintLeft_toRightOf="@+id/keji"
                 app:layout_constraintRight_toLeftOf="@+id/shishang"
@@ -123,6 +131,7 @@
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:text="时尚"
+                android:textColor="@color/black"
                 android:textSize="25sp"
                 android:gravity="center"
                 android:id="@+id/shishang"
@@ -141,19 +150,20 @@
         app:layout_constraintTop_toBottomOf="@+id/swish"
         app:layout_constraintHeight_percent="0.85">
 
-        <com.scwang.smartrefresh.layout.header.FalsifyHeader
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
-        <!--<pl.droidsonroids.gif.GifImageView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@mipmap/eat" />-->
+<!--        <pl.droidsonroids.gif.GifImageView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="150dp"-->
+<!--            android:scaleType="centerCrop"-->
+<!--            android:src="@drawable/load" />-->
         <ListView
             android:id="@+id/newsList"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.scwang.smartrefresh.layout.footer.FalsifyFooter
+        <com.scwang.smartrefresh.layout.footer.ClassicsFooter
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
         <!--<pl.droidsonroids.gif.GifImageButton
