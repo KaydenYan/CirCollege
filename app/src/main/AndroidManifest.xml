@@ -9,6 +9,11 @@
     <uses-permission android:name="android.permission.CHANGE_NETWORK_STATE"></uses-permission>
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
 
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -26,7 +31,21 @@
         </activity>
         <activity android:name=".RegisterActivity"></activity>
         <activity android:name=".loginActivity"></activity>
-        <activity android:name=".UsrBio"></activity>
+        <activity android:name=".TextActivityTwo"></activity>
+        <activity android:name=".TextActivity"></activity>
+
+        <!--路径 前面为包名，后面为fileprovider固定值，使用包名便于区分-->
+        <provider
+            android:name="android.support.v4.content.FileProvider"
+            android:authorities="com.example.funnews.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
+
 
     </application>
 
