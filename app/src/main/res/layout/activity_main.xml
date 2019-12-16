@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -23,7 +23,7 @@
         app:layout_constraintTop_toTopOf="parent"
         android:id="@+id/swish"
         >
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:orientation="horizontal"
@@ -137,7 +137,7 @@
                 android:id="@+id/shishang"
                 app:layout_constraintLeft_toRightOf="@+id/caijing"
                 />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </HorizontalScrollView>
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
@@ -172,7 +172,7 @@
             android:src="@mipmap/rect"/>-->
     </com.scwang.smartrefresh.layout.SmartRefreshLayout>
 
-    <android.support.constraint.ConstraintLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/buttomTab"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -239,5 +239,5 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintHorizontal_bias="0.90"
             app:layout_constraintVertical_bias="0.50"/>
-    </android.support.constraint.ConstraintLayout>
-</android.support.constraint.ConstraintLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
