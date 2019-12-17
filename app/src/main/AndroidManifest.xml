@@ -29,6 +29,7 @@
         </activity>
         <activity android:name=".NewsInfoActivity"></activity>
         <activity android:name=".sss"></activity>
+        <activity android:name=".query"></activity>
     </application>
 
 </manifest>

@@ -14,6 +14,7 @@ public class toutiao {
     private String thumbnail_pic_s;
     private String thumbnail_pic_s02;
     private String thumbnail_pic_s03;
+    private String shoucang;
     private ArrayList<toutiao> toutiaos;
 
     public String getUniquekey() {
@@ -87,6 +88,13 @@ public class toutiao {
     public void setThumbnail_pic_s03(String thumbnail_pic_s03) {
         this.thumbnail_pic_s03 = thumbnail_pic_s03;
     }
+    public String getShoucang(){
+        return shoucang;
+    }
+    public void setShoucang(String shoucang){
+        this.shoucang =shoucang;
+    }
+
     public ArrayList<toutiao> getToutiaos(){
         return toutiaos; 
     }
@@ -100,7 +108,8 @@ public class toutiao {
                         "url='" +url+'\''+'\n'+
                         "thumbnail_pic_s='" +thumbnail_pic_s+'\''+'\n'+
                         "thumbnail_pic_s02='" +thumbnail_pic_s02+'\''+'\n'+
-                        "thumbnail_pic_s03='" +thumbnail_pic_s03+'\''+'\n';
+                        "thumbnail_pic_s03='" +thumbnail_pic_s03+'\''+'\n'+
+                        "shoucang='" +thumbnail_pic_s03+'\''+'\n';
     }
 
 

@@ -46,7 +46,7 @@ public class sss extends AppCompatActivity {
     }
     private void loadMoreData() {
         List<likenews> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03 from likenews",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03,shoucang from likenews",null);
         cursor1.moveToFirst();
 
         while (!cursor1.isAfterLast()) {
@@ -59,6 +59,7 @@ public class sss extends AppCompatActivity {
             d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
             d.setThumbnail_pic_s02(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s02")));
             d.setThumbnail_pic_s03(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s03")));
+            d.setShoucang(cursor1.getString(cursor1.getColumnIndex("shoucang")));
             likenews.add(d);
             cursor1.moveToNext();
         }
@@ -76,7 +77,7 @@ public class sss extends AppCompatActivity {
         //遍历Cursor
 
         ArrayList<likenews> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03 from likenews",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03, shoucang from likenews",null);
         cursor1.moveToFirst();
         int i=0;
         while (!cursor1.isAfterLast()) {
@@ -88,6 +89,7 @@ public class sss extends AppCompatActivity {
             d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
             d.setThumbnail_pic_s02(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s02")));
             d.setThumbnail_pic_s03(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s03")));
+            d.setShoucang(cursor1.getString(cursor1.getColumnIndex("shoucang")));
             i=i+1;
             Log.e("TAGxx ----------", i + cursor1.getString(cursor1.getColumnIndex("author_name")));
             likenews.add(d);

@@ -13,8 +13,11 @@ import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.funnews.josnGet.DBHelper_toutiao;
@@ -41,6 +44,7 @@ public class MainActivity extends AppCompatActivity {
 
     //private List<toutiao> toutiaos;
     private ArrayList<toutiao> toutiaos ;
+    private SearchView searchView;
     private ListView newsList;
     private MyAdapter adapter;
     private SmartRefreshLayout srl;
@@ -48,6 +52,8 @@ public class MainActivity extends AppCompatActivity {
     private DBHelper_toutiao dbHelper;
     private ImageView likeBtn;
     private CustomeClickListener listener;
+    private Button buttomQuery;
+    private EditText editText;
     //V1
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
@@ -59,6 +65,8 @@ public class MainActivity extends AppCompatActivity {
         setStatusBar();
         toutiaos=new ArrayList<toutiao>();
         likeBtn =findViewById(R.id.likeBtn);
+        editText =findViewById(R.id.edtQuery);
+        buttomQuery =findViewById(R.id.buttomQuery);
         com.tencent.smtt.sdk.WebView webView = new com.tencent.smtt.sdk.WebView(this);
 
         int width = webView.getView().getWidth();
@@ -77,6 +85,8 @@ public class MainActivity extends AppCompatActivity {
     private void registerListeners() {
         listener =new CustomeClickListener();
         likeBtn.setOnClickListener(listener);
+        editText.setOnClickListener(listener);
+        buttomQuery.setOnClickListener(listener);
     }
 
     private void getViews() {
@@ -95,13 +105,21 @@ public class MainActivity extends AppCompatActivity {
                     );
                     startActivity(intent);
                     break;
+                case R.id.buttomQuery:
+                    editText = findViewById(R.id.edtQuery);
+                    String querry = editText.getText().toString();
+                    Intent intent1 = new Intent(MainActivity.this,
+                            query.class);
+                    intent1.putExtra("querry",querry);
+                    startActivity(intent1);
+                    break;
             }
         }
     }
 
     private void loadMoreData() {
         List<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03 from countinfo limit 10,20",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03,shoucang from countinfo limit 10,20",null);
         cursor1.moveToFirst();
 
         while (!cursor1.isAfterLast()) {
@@ -113,6 +131,7 @@ public class MainActivity extends AppCompatActivity {
             d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
             d.setThumbnail_pic_s02(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s02")));
             d.setThumbnail_pic_s03(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s03")));
+            d.setShoucang(cursor1.getString(cursor1.getColumnIndex("shoucang")));
             toutiaos.add(d);
             cursor1.moveToNext();
         }
@@ -130,7 +149,7 @@ public class MainActivity extends AppCompatActivity {
         //遍历Cursor
 
         ArrayList<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03 from countinfo limit 0,10",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03,shoucang from countinfo limit 0,10",null);
         cursor1.moveToFirst();
         int i=0;
         while (!cursor1.isAfterLast()) {
@@ -142,6 +161,7 @@ public class MainActivity extends AppCompatActivity {
             d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
             d.setThumbnail_pic_s02(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s02")));
             d.setThumbnail_pic_s03(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s03")));
+            d.setShoucang(cursor1.getString(cursor1.getColumnIndex("shoucang")));
             i=i+1;
             Log.e("TAGxx ----------", i + cursor1.getString(cursor1.getColumnIndex("author_name")));
             toutiaos.add(d);
@@ -187,15 +207,16 @@ public class MainActivity extends AppCompatActivity {
                 String thumbnail_pic_s02 = list.getJSONObject(i).getString("thumbnail_pic_s02");
                 cv.put("thumbnail_pic_s02",thumbnail_pic_s02);
             }else{
-                cv.put("thumbnail_pic_s02", (String) null);
+                cv.put("thumbnail_pic_s02", "null");
             }
 
             if(list.getJSONObject(i).has("thumbnail_pic_s03")){
                 String thumbnail_pic_s03 = list.getJSONObject(i).getString("thumbnail_pic_s03");
                 cv.put("thumbnail_pic_s03",thumbnail_pic_s03);
             }else{
-                cv.put("thumbnail_pic_s03", (String) null);
+                cv.put("thumbnail_pic_s03", "null");
             }
+            cv.put("shoucang","no");
             db.insert("countinfo",null,cv);
 
         }
@@ -309,11 +330,14 @@ public class MainActivity extends AppCompatActivity {
                         intent.putExtra("thumbnail_pic_s",toutiaos.get(position).getThumbnail_pic_s());
                         intent.putExtra("thumbnail_pic_s02",toutiaos.get(position).getThumbnail_pic_s02());
                         intent.putExtra("thumbnail_pic_s03",toutiaos.get(position).getThumbnail_pic_s03());
+                        intent.putExtra("shoucang",toutiaos.get(position).getShoucang());
                         MainActivity.this.startActivity(intent);//启动Activity
 
 
                     }
                 });
+
+
 
             }
         });

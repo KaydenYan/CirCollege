@@ -12,9 +12,15 @@ public class likenews {
     private String thumbnail_pic_s;
     private String thumbnail_pic_s02;
     private String thumbnail_pic_s03;
+    private String shoucang;
     private ArrayList<likenews> likenews;
 
-
+    public String getShoucang(){
+        return shoucang;
+    }
+    public void setShoucang(String shoucang){
+        this.shoucang =shoucang;
+    }
 
     public String getTitle() {
         return title;
@@ -71,6 +77,7 @@ public class likenews {
     public void setThumbnail_pic_s03(String thumbnail_pic_s03) {
         this.thumbnail_pic_s03 = thumbnail_pic_s03;
     }
+
     public ArrayList<likenews> getLikenews(){
         return likenews;
     }
@@ -82,6 +89,7 @@ public class likenews {
                         "url='" +url+'\''+'\n'+
                         "thumbnail_pic_s='" +thumbnail_pic_s+'\''+'\n'+
                         "thumbnail_pic_s02='" +thumbnail_pic_s02+'\''+'\n'+
-                        "thumbnail_pic_s03='" +thumbnail_pic_s03+'\''+'\n';
+                        "thumbnail_pic_s03='" +thumbnail_pic_s03+'\''+'\n'+
+                                "shoucang='" +shoucang+'\''+'\n';
     }
 }

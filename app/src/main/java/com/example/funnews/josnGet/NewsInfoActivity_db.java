@@ -16,7 +16,7 @@ public class NewsInfoActivity_db extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table likenews(title varchar(100) primary key, date varchar(20),  author_name varchar(10), url varchar(100), thumbnail_pic_s varchar(100),thumbnail_pic_s02 varchar(100),thumbnail_pic_s03 varchar(100))";
+        String sql = "create table likenews(title varchar(100) primary key, date varchar(20),  author_name varchar(10), url varchar(100), thumbnail_pic_s varchar(100),thumbnail_pic_s02 varchar(100),thumbnail_pic_s03 varchar(100),shoucang varchar(10))";
         db.execSQL(sql);
 
     }

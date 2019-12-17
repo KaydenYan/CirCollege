@@ -181,26 +181,26 @@ public class like_MyAdapter extends BaseAdapter {
 
     final static class ViewHolder{
 
-        private ImageView itemImg;
-        private TextView itemTitle;
-        private TextView itemDate;
-        private TextView itemAuthor;
+        public ImageView itemImg;
+        public TextView itemTitle;
+        public TextView itemDate;
+        public TextView itemAuthor;
     }
     final static class ViewHolder1{
         public ImageView itemImg;
         public ImageView itemImg2;
         public ImageView itemImg3;
-        private TextView itemTitle;
-        private TextView itemDate;
-        private TextView itemAuthor;
+        public TextView itemTitle;
+        public TextView itemDate;
+        public TextView itemAuthor;
 
     }
     final static class ViewHolder2{
         public ImageView itemImg;
         public ImageView itemImg3;
-        private TextView itemTitle;
-        private TextView itemDate;
-        private TextView itemAuthor;
+        public TextView itemTitle;
+        public TextView itemDate;
+        public TextView itemAuthor;
 
     }
     public int getViewTypeCount() {
