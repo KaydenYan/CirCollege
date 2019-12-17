@@ -6,20 +6,23 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnFocusChangeListener;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 
-
+import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
 
 
 public class RegisterActivity extends AppCompatActivity {
@@ -29,8 +32,12 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView yzm1;
     private EditText pnumber1;
     private EditText yzmhq1;
+    private TextView cs1;
+    private TextView cs2;
+    private ImageView dl;
+    private CustomeOnClickListener listener;
     //private int realcode = 123456;//(int) ((Math.random() * 9 + 1) * 100000);
-    private String realcode=""+123456;
+    private String realcode="=---==";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,20 +45,10 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.signup);
         ButterKnife.bind(this);
         mDBOpenHelper = new DBOpenHelper(this);
+        getView();
+        registListener();
 
-        //接收手机验证码
-        yzm1 = findViewById(R.id.yzm);
-        yzm1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
 
-                pnumber1 = findViewById(R.id.pnumber);
-                String Pnumber = pnumber1.getText().toString().trim();
-                //Intent intent = new Intent(RegisterActivity.this, loginActivity.class);
-                //startActivity(intent);
-
-            }
-        });
 
 
 
@@ -145,61 +142,100 @@ public class RegisterActivity extends AppCompatActivity {
     TextView check2;
 
 
-    @OnClick({
-            //R.id.iv_registeractivity_back,
-            //R.id.iv_registeractivity_showCode,
-            R.id.bt_registeractivity_register
-    })
-    public void onClick(View view) {
-        switch (view.getId()) {
 
-//            case R.id.iv_registeractivity_showCode:    //改变随机验证码的生成
-//                mIvRegisteractivityShowcode.setImageBitmap(Code.getInstance().createBitmap());
-//                realCode = Code.getInstance().getCode().toLowerCase();
-//                break;
-            case R.id.bt_registeractivity_register:    //注册按钮
-                //获取用户输入的用户名、密码、验证码
-                String username = mEtRegisteractivityUsername.getText().toString().trim();
-                String password = mEtRegisteractivityPassword1.getText().toString().trim();
-                String password2 = mEtRegisteractivityPassword2.getText().toString().trim();
-                yzmhq1 = findViewById(R.id.yzmhq);
-                String phoneCode = yzmhq1.getText().toString().trim();
-
-                //判断用户名是否包含中文
-                Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]");
-                Matcher m = p.matcher(username);
-                //注册验证
-                if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)  ) {
-                    if (phoneCode.equals(realcode)) {
-                    //判断用户名中是否含有中文
-                    if (m.find()) {
-                        Toast.makeText(this,  "用户名中不能包含中文!", Toast.LENGTH_SHORT).show();
-                        break;
-                    }
-                    if(!password.equals(password2)){
-                        Toast.makeText(this,  "两次输入的密码不一致!", Toast.LENGTH_SHORT).show();
-                        break;
-                    }
-                    if(password.length()<6 || password.length()>16){
-                        Toast.makeText(this,  "您输入的密码应在6-16位之间!", Toast.LENGTH_SHORT).show();
-                        break;
-                    }
-
-
-                    //将用户名和密码加入到数据库中
-                    mDBOpenHelper.add(username, password);
-                    Intent intent2 = new Intent(this, loginActivity.class);
-                    startActivity(intent2);
-                    finish();
-                    Toast.makeText(this,  "验证通过，注册成功", Toast.LENGTH_SHORT).show();
-                    } else {
-                        Toast.makeText(this, "验证码错误,注册失败", Toast.LENGTH_SHORT).show();
-                    }
-                }else {
-                    Toast.makeText(this, "未完善信息，注册失败", Toast.LENGTH_SHORT).show();
+    public void getView(){
+        pnumber1 = findViewById(R.id.pnumber);
+        yzm1 = findViewById(R.id.yzm);
+        cs1=findViewById(R.id.cs1);
+        cs2=findViewById(R.id.cs2);
+        dl=findViewById(R.id.bt_registeractivity_register);
+    }
+    private void registListener(){
+        listener = new CustomeOnClickListener();
+        pnumber1.setOnClickListener(listener);
+        yzm1.setOnClickListener(listener);
+        dl.setOnClickListener(listener);
+    }
+    public void sendRequestWithOkHttp(final String ab) {
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    // 创建一个OkHttpClient的实例
+                    OkHttpClient client = new OkHttpClient();
+                    // 如果要发送一条HTTP请求，就需要创建一个Request对象
+                    // 可在最终的build()方法之前连缀很多其他方法来丰富这个Request对象
+                    Request request = new Request.Builder()
+                            .url(ab)
+                            .build();
+                    // 调用OkHttpClient的newCall()方法来创建一个Call对象，并调用execute()方法来发送请求并获取服务器的返回数据
+                    Response response = client.newCall(request).execute();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
-                break;
+            }
+        }).start();
+    }
+    class CustomeOnClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.yzm:
+                    int qwe=(int)((Math.random() * 9 + 1) * 100000);
+                    realcode=""+qwe;
+                    String Pnumber = pnumber1.getText().toString().trim();
+                    String aac="http://v.juhe.cn/sms/send?mobile="+Pnumber+"&tpl_id=201577&tpl_value=%23code%23%3D"+realcode+"&dtype=&key=376a8669319ed3b6811f12065d084c58";
+                    cs1.setText(realcode);
+                    cs2.setText(aac);
+                    sendRequestWithOkHttp(aac);
+                    break;
+                case R.id.bt_registeractivity_register:    //注册按钮
+                    //获取用户输入的用户名、密码、验证码
+                    String username = mEtRegisteractivityUsername.getText().toString().trim();
+                    String password = mEtRegisteractivityPassword1.getText().toString().trim();
+                    String password2 = mEtRegisteractivityPassword2.getText().toString().trim();
+                    yzmhq1 = findViewById(R.id.yzmhq);
+                    String phoneCode = yzmhq1.getText().toString().trim();
+
+                    //判断用户名是否包含中文
+                    Pattern p = Pattern.compile("[\\u4e00-\\u9fa5]");
+                    Matcher m = p.matcher(username);
+                    //注册验证
+                    if (!TextUtils.isEmpty(username) && !TextUtils.isEmpty(password)  ) {
+                        if (phoneCode.equals(realcode)) {
+                            //判断用户名中是否含有中文
+                            if (m.find()) {
+                                Toast.makeText(RegisterActivity.this,  "用户名中不能包含中文!", Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+                            if(!password.equals(password2)){
+                                Toast.makeText(RegisterActivity.this,  "两次输入的密码不一致!", Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+                            if(password.length()<6 || password.length()>16){
+                                Toast.makeText(RegisterActivity.this,  "您输入的密码应在6-16位之间!", Toast.LENGTH_SHORT).show();
+                                break;
+                            }
+
+
+                            //将用户名和密码加入到数据库中
+                            mDBOpenHelper.add(username, password);
+                            Intent intent2 = new Intent(RegisterActivity.this, loginActivity.class);
+                            startActivity(intent2);
+                            finish();
+                            Toast.makeText(RegisterActivity.this,  "验证通过，注册成功", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(RegisterActivity.this, "验证码错误,注册失败", Toast.LENGTH_SHORT).show();
+                        }
+                    }else {
+                        Toast.makeText(RegisterActivity.this, "未完善信息，注册失败", Toast.LENGTH_SHORT).show();
+                    }
+                    break;
+
+            }
         }
     }
+
 
 }
