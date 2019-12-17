@@ -26,6 +26,7 @@ public class NewsInfoActivity extends AppCompatActivity {
     private ArrayList<likenews> likenews;
     private int position;
     private String[][] d;
+    private ImageView delete_item;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,12 +60,14 @@ public class NewsInfoActivity extends AppCompatActivity {
     private void registerListeners() {
         listener =new CustomeOnClickListener();
         likeBtn.setOnClickListener(listener);
+        delete_item.setOnClickListener(listener);
     }
 
 
     private void getViews() {
         likeBtn =findViewById(R.id.likeBtn);
         webView = findViewById(R.id.wv_content);
+        delete_item =findViewById(R.id.delete_item);
     }
 
     /**
@@ -207,6 +210,9 @@ public class NewsInfoActivity extends AppCompatActivity {
                             delete_db();
                         }
                     }
+                    break;
+                case R.id.delete_item:
+                    delete_db();
                     break;
             }
         }

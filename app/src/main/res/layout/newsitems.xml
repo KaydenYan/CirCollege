@@ -47,4 +47,5 @@
         app:layout_constraintTop_toBottomOf="@id/itemTitle" />
 
 
+
 </android.support.constraint.ConstraintLayout>
