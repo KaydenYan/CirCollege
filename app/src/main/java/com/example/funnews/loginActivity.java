@@ -35,6 +35,7 @@ public class loginActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         mDBOpenHelper = new DBOpenHelper(this);
 
+
         //tv_loginactivity_register=findViewById(R.id.tv_loginactivity_register);
         //getView();
         //registListener();
