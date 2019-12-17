@@ -13,8 +13,12 @@ import android.view.WindowManager;
 import android.widget.ImageView;
 
 import android.widget.AdapterView;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -46,6 +50,7 @@ public class MainActivity extends AppCompatActivity {
     //master
 
     private ArrayList<toutiao> toutiaos ;
+    private SearchView searchView;
     private ListView newsList;
     private MyAdapter adapter;
     private TextView top;
@@ -61,6 +66,11 @@ public class MainActivity extends AppCompatActivity {
     private SmartRefreshLayout srl;
     private SQLiteDatabase db;
     private DBHelper_toutiao dbHelper;
+    private ImageView likeBtn;
+    private CustomeClickListener listener;
+    private Button buttomQuery;
+    private EditText editText;
+    //V1
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
     private String abc;
@@ -70,15 +80,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        adapter = new MyAdapter(this,toutiaos);
         setStatusBar();
         getView();
+        com.tencent.smtt.sdk.WebView webView = new com.tencent.smtt.sdk.WebView(this);
         registListener();
         toutiaos=new ArrayList<toutiao>();
+        int width = webView.getView().getWidth();
         abc="http://v.juhe.cn/toutiao/index?dtype=&type=top&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
         sendRequestWithOkHttp(abc);
         newsList =findViewById(R.id.newsList);
-        adapter = new MyAdapter(this,toutiaos,R.layout.newsitems);
-    }
+        adapter = new MyAdapter(this,toutiaos);
 
 
     public void getView(){
@@ -89,6 +101,9 @@ public class MainActivity extends AppCompatActivity {
         guoji=findViewById(R.id.guoji);
         yule=findViewById(R.id.yule);
         tiyu=findViewById(R.id.tiyu);
+        likeBtn =findViewById(R.id.likeBtn);
+        editText =findViewById(R.id.edtQuery);
+        buttomQuery =findViewById(R.id.buttomQuery);
         junshi=findViewById(R.id.junshi);
         keji=findViewById(R.id.keji);
         caijing=findViewById(R.id.caijing);
@@ -107,6 +122,9 @@ public class MainActivity extends AppCompatActivity {
         keji.setOnClickListener(listener);
         caijing.setOnClickListener(listener);
         shishang.setOnClickListener(listener);
+        likeBtn.setOnClickListener(listener);
+        editText.setOnClickListener(listener);
+        buttomQuery.setOnClickListener(listener);
     }
     private void settext(){
         top.setTextColor(getResources().getColor(R.color.black));
@@ -192,13 +210,28 @@ public class MainActivity extends AppCompatActivity {
                     abc="http://v.juhe.cn/toutiao/index?dtype=&type=shishang&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
                     sendRequestWithOkHttp(abc);
                     break;
+                case R.id.likeBtn:
+                    Intent intent =new Intent();
+                    intent.setClass(
+                            MainActivity.this,sss.class
+                    );
+                    startActivity(intent);
+                    break;
+                case R.id.buttomQuery:
+                    editText = findViewById(R.id.edtQuery);
+                    String querry = editText.getText().toString();
+                    Intent intent1 = new Intent(MainActivity.this,
+                            query.class);
+                    intent1.putExtra("querry",querry);
+                    startActivity(intent1);
+                    break;
             }
         }
     }
 
     private void loadMoreData() {
         List<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s from countinfo limit 10,30",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03,shoucang from countinfo limit 10,20",null);
         cursor1.moveToFirst();
 
         while (!cursor1.isAfterLast()) {
@@ -208,9 +241,13 @@ public class MainActivity extends AppCompatActivity {
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
             d.setUrl(cursor1.getString(cursor1.getColumnIndex("url")));
             d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
+            d.setThumbnail_pic_s02(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s02")));
+            d.setThumbnail_pic_s03(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s03")));
+            d.setShoucang(cursor1.getString(cursor1.getColumnIndex("shoucang")));
             toutiaos.add(d);
             cursor1.moveToNext();
         }
+
         adapter.notifyDataSetChanged();
     }
 
@@ -224,7 +261,7 @@ public class MainActivity extends AppCompatActivity {
         //遍历Cursor
 
         ArrayList<toutiao> tt=new ArrayList<>();
-        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s from countinfo limit 0,10",null);
+        Cursor cursor1 =db.rawQuery("select author_name,title,date,url,thumbnail_pic_s,thumbnail_pic_s02,thumbnail_pic_s03,shoucang from countinfo limit 0,10",null);
         cursor1.moveToFirst();
         int i=0;
         while (!cursor1.isAfterLast()) {
@@ -234,6 +271,9 @@ public class MainActivity extends AppCompatActivity {
             d.setDate(cursor1.getString(cursor1.getColumnIndex("date")));
             d.setUrl(cursor1.getString(cursor1.getColumnIndex("url")));
             d.setThumbnail_pic_s(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s")));
+            d.setThumbnail_pic_s02(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s02")));
+            d.setThumbnail_pic_s03(cursor1.getString(cursor1.getColumnIndex("thumbnail_pic_s03")));
+            d.setShoucang(cursor1.getString(cursor1.getColumnIndex("shoucang")));
             i=i+1;
             Log.e("TAGxx ----------", i + cursor1.getString(cursor1.getColumnIndex("author_name")));
             toutiaos.add(d);
@@ -279,15 +319,16 @@ public class MainActivity extends AppCompatActivity {
                 String thumbnail_pic_s02 = list.getJSONObject(i).getString("thumbnail_pic_s02");
                 cv.put("thumbnail_pic_s02",thumbnail_pic_s02);
             }else{
-                cv.put("thumbnail_pic_s02", (String) null);
+                cv.put("thumbnail_pic_s02", "null");
             }
 
             if(list.getJSONObject(i).has("thumbnail_pic_s03")){
                 String thumbnail_pic_s03 = list.getJSONObject(i).getString("thumbnail_pic_s03");
                 cv.put("thumbnail_pic_s03",thumbnail_pic_s03);
             }else{
-                cv.put("thumbnail_pic_s03", (String) null);
+                cv.put("thumbnail_pic_s03", "null");
             }
+            cv.put("shoucang","no");
             db.insert("countinfo",null,cv);
 
         }
@@ -324,6 +365,8 @@ public class MainActivity extends AppCompatActivity {
             getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
         }
     }
+
+
     private void showResponse(final String js) {
         runOnUiThread(new Runnable() {
             @Override
@@ -394,15 +437,28 @@ public class MainActivity extends AppCompatActivity {
                          * 在datas中通过点击的位置position通过get()方法获得具体某个新闻
                          * 的数据然后通过Intent的putExtra()传递到NewsInfoActivity中
                          */
+
                         intent.putExtra("url", toutiaos.get(position).getUrl());
+                        intent.putExtra("title",toutiaos.get(position).getTitle());
+                        intent.putExtra("author_name",toutiaos.get(position).getAuthor_name());
+                        intent.putExtra("date",toutiaos.get(position).getDate());
+                        intent.putExtra("thumbnail_pic_s",toutiaos.get(position).getThumbnail_pic_s());
+                        intent.putExtra("thumbnail_pic_s02",toutiaos.get(position).getThumbnail_pic_s02());
+                        intent.putExtra("thumbnail_pic_s03",toutiaos.get(position).getThumbnail_pic_s03());
+                        intent.putExtra("shoucang",toutiaos.get(position).getShoucang());
                         MainActivity.this.startActivity(intent);//启动Activity
+
 
                     }
                 });
+
+
+
             }
         });
 
     }
+
 
     private void sendRequestWithOkHttp(final String ab) {
         new Thread(new Runnable() {

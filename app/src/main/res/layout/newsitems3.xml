@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_item">
+    <TextView
+        android:id="@+id/itemTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:textSize="17dp"
+        android:layout_marginTop="15dp"
+        android:text=""
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"/>
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/multpic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/itemTitle">
+        <ImageView
+            android:id="@+id/itemImg"
+            android:layout_width="256px"
+            android:layout_height="192px"
+            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"/>
+
+        <ImageView
+            android:id="@+id/itemImg3"
+            android:layout_width="256px"
+            android:layout_height="192px"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"/>
+    </android.support.constraint.ConstraintLayout>
+
+
+    <TextView
+        android:id="@+id/itemDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:text=""
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/multpic" />
+
+    <TextView
+        android:id="@+id/itemAuthor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="15dp"
+        android:text=""
+        app:layout_constraintRight_toLeftOf="@id/itemDate"
+        app:layout_constraintTop_toBottomOf="@id/multpic" />
+
+
+
+</android.support.constraint.ConstraintLayout>

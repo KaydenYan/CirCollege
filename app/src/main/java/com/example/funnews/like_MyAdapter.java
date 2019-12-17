@@ -13,8 +13,7 @@ import com.example.funnews.josnGet.toutiao;
 
 import java.util.ArrayList;
 
-public class MyAdapter extends BaseAdapter {
-
+public class like_MyAdapter extends BaseAdapter {
     private final int TYPE_COUNT = 3;
 
     private final int TYPE_ONE = 0;
@@ -23,26 +22,26 @@ public class MyAdapter extends BaseAdapter {
     private final int TYPE_THREE =2;
 
 
-    private ArrayList<toutiao> toutiaos ;
+    private ArrayList<likenews> likenews ;
     private Context context;
     private int itemLayout;
     private int currentType;
     private LayoutInflater inflater;
-    public MyAdapter(Context context, ArrayList<toutiao> toutiaos ) {
+    public like_MyAdapter(Context context, ArrayList<likenews> likenews) {
 
-        this.toutiaos= toutiaos;
+        this.likenews= likenews;
         this.context = context;
         inflater =LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
-        return toutiaos.size();
+        return likenews.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return toutiaos.get(position);
+        return likenews.get(position);
     }
 
     @Override
@@ -57,7 +56,7 @@ public class MyAdapter extends BaseAdapter {
 
         currentType =getItemViewType(position);
         if(currentType ==TYPE_ONE){
-            ViewHolder holder =null;
+            like_MyAdapter.ViewHolder holder =null;
             if(null == convertView){
                 holder = new ViewHolder();
                 convertView = LayoutInflater.from(context).inflate(R.layout.newsitems, null);
@@ -70,13 +69,13 @@ public class MyAdapter extends BaseAdapter {
 //            convertView.setTag(2, convertView);
 
             } else {
-                holder = (ViewHolder) convertView.getTag();
+                holder = (like_MyAdapter.ViewHolder) convertView.getTag();
 //            convertView.getTag(1);
 //            convertView.getTag(2);
 
             }
 
-            toutiao stu = toutiaos.get(position);
+            likenews stu = likenews.get(position);
 
             holder.itemTitle.setText(stu.getTitle());
             holder.itemAuthor.setText(stu.getAuthor_name());
@@ -86,7 +85,7 @@ public class MyAdapter extends BaseAdapter {
 
 
         }else if(currentType ==TYPE_TWO){
-            ViewHolder1 holder1 =null;
+            like_MyAdapter.ViewHolder1 holder1 =null;
             if(null == convertView){
                 holder1 = new ViewHolder1();
                 convertView = LayoutInflater.from(context).inflate(R.layout.newsitems2, null);
@@ -99,13 +98,13 @@ public class MyAdapter extends BaseAdapter {
 //            convertView.setTag(2, convertView);
 
             } else {
-                holder1 = (ViewHolder1) convertView.getTag();
+                holder1 = (like_MyAdapter.ViewHolder1) convertView.getTag();
 //            convertView.getTag(1);
 //            convertView.getTag(2);
 
             }
 
-            toutiao stu = toutiaos.get(position);
+            likenews stu = likenews.get(position);
 
             holder1.itemTitle.setText(stu.getTitle());
             holder1.itemAuthor.setText(stu.getAuthor_name());
@@ -120,7 +119,7 @@ public class MyAdapter extends BaseAdapter {
 
         }
         else if(currentType ==TYPE_THREE){
-            ViewHolder2 holder2 =null;
+            like_MyAdapter.ViewHolder2 holder2 =null;
             if(null == convertView){
                 holder2 = new ViewHolder2();
                 convertView = LayoutInflater.from(context).inflate(R.layout.newsitems3, null);
@@ -133,13 +132,13 @@ public class MyAdapter extends BaseAdapter {
 //            convertView.setTag(2, convertView);
 
             } else {
-                holder2 = (ViewHolder2) convertView.getTag();
+                holder2 = (like_MyAdapter.ViewHolder2) convertView.getTag();
 //            convertView.getTag(1);
 //            convertView.getTag(2);
 
             }
 
-            toutiao stu = toutiaos.get(position);
+            likenews stu = likenews.get(position);
 
             holder2.itemTitle.setText(stu.getTitle());
             holder2.itemAuthor.setText(stu.getAuthor_name());
@@ -153,7 +152,7 @@ public class MyAdapter extends BaseAdapter {
     }
 
 
-    private void initViews(toutiao toutiaos, ViewHolder holder) {//初始化数据
+    private void initViews(toutiao toutiaos, like_MyAdapter.ViewHolder holder) {//初始化数据
 
         holder.itemImg.setTag(toutiaos.getThumbnail_pic_s());
         holder.itemTitle.setText(toutiaos.getTitle());
@@ -162,7 +161,7 @@ public class MyAdapter extends BaseAdapter {
 
 
     }
-    private void initViews1(toutiao toutiaos,ViewHolder1 holder1){
+    private void initViews1(toutiao toutiaos, like_MyAdapter.ViewHolder1 holder1){
         holder1.itemImg.setTag(toutiaos.getThumbnail_pic_s());
         holder1.itemImg2.setTag(toutiaos.getThumbnail_pic_s02());
         holder1.itemImg3.setTag(toutiaos.getThumbnail_pic_s03());
@@ -170,7 +169,7 @@ public class MyAdapter extends BaseAdapter {
         holder1.itemAuthor.setText(toutiaos.getAuthor_name());
         holder1.itemDate.setText(toutiaos.getDate());
     }
-    private void initViews2(toutiao toutiaos,ViewHolder2 holder2){
+    private void initViews2(toutiao toutiaos, like_MyAdapter.ViewHolder2 holder2){
         holder2.itemImg.setTag(toutiaos.getThumbnail_pic_s());
         holder2.itemImg3.setTag(toutiaos.getThumbnail_pic_s02());
         holder2.itemTitle.setText(toutiaos.getTitle());
@@ -182,26 +181,26 @@ public class MyAdapter extends BaseAdapter {
 
     final static class ViewHolder{
 
-        private ImageView itemImg;
-        private TextView itemTitle;
-        private TextView itemDate;
-        private TextView itemAuthor;
+        public ImageView itemImg;
+        public TextView itemTitle;
+        public TextView itemDate;
+        public TextView itemAuthor;
     }
     final static class ViewHolder1{
         public ImageView itemImg;
         public ImageView itemImg2;
         public ImageView itemImg3;
-        private TextView itemTitle;
-        private TextView itemDate;
-        private TextView itemAuthor;
+        public TextView itemTitle;
+        public TextView itemDate;
+        public TextView itemAuthor;
 
     }
     final static class ViewHolder2{
         public ImageView itemImg;
         public ImageView itemImg3;
-        private TextView itemTitle;
-        private TextView itemDate;
-        private TextView itemAuthor;
+        public TextView itemTitle;
+        public TextView itemDate;
+        public TextView itemAuthor;
 
     }
     public int getViewTypeCount() {

@@ -1,28 +1,25 @@
-package com.example.funnews.josnGet;
+package com.example.funnews;
 
 import java.util.ArrayList;
 
-public class toutiao {
+public class likenews {
 
-    public static toutiao.result result;
-    private String uniquekey;
+
     private String title;
     private String date;
-    private String category;
     private String author_name;
     private String url;
     private String thumbnail_pic_s;
     private String thumbnail_pic_s02;
     private String thumbnail_pic_s03;
     private String shoucang;
-    private ArrayList<toutiao> toutiaos;
+    private ArrayList<likenews> likenews;
 
-    public String getUniquekey() {
-        return uniquekey;
+    public String getShoucang(){
+        return shoucang;
     }
-
-    public void setUniquekey(String uniquekey) {
-        this.uniquekey = uniquekey;
+    public void setShoucang(String shoucang){
+        this.shoucang =shoucang;
     }
 
     public String getTitle() {
@@ -39,14 +36,6 @@ public class toutiao {
 
     public void setDate(String date) {
         this.date = date;
-    }
-
-    public String getCategory() {
-        return category;
-    }
-
-    public void setCategory(String category) {
-        this.category = category;
     }
 
     public String getAuthor_name() {
@@ -88,62 +77,19 @@ public class toutiao {
     public void setThumbnail_pic_s03(String thumbnail_pic_s03) {
         this.thumbnail_pic_s03 = thumbnail_pic_s03;
     }
-    public String getShoucang(){
-        return shoucang;
-    }
-    public void setShoucang(String shoucang){
-        this.shoucang =shoucang;
-    }
 
-    public ArrayList<toutiao> getToutiaos(){
-        return toutiaos; 
+    public ArrayList<likenews> getLikenews(){
+        return likenews;
     }
     public String toString (){
         return
-                "uniquekey='"+uniquekey+'\''+'\n'+
                         "title='"+title+'\''+'\n'+
                         "date='" +date+'\''+'\n'+
-                        "category='" +category+'\''+'\n'+
                         "author_name='" +author_name+'\''+'\n'+
                         "url='" +url+'\''+'\n'+
                         "thumbnail_pic_s='" +thumbnail_pic_s+'\''+'\n'+
                         "thumbnail_pic_s02='" +thumbnail_pic_s02+'\''+'\n'+
                         "thumbnail_pic_s03='" +thumbnail_pic_s03+'\''+'\n'+
-                        "shoucang='" +thumbnail_pic_s03+'\''+'\n';
+                                "shoucang='" +shoucang+'\''+'\n';
     }
-
-
-    class result{
-        private int type;
-        private String title;
-        private String date;
-        private String author_name;
-        private String thumbnail_pic_s;
-        private String thumbnail_pic_s02;
-        private String thumbnail_pic_s03;
-        public int getType(){
-            return type;
-        }
-        public String getTitle(){
-            return title;
-        }
-        public String getThumbnail_pic_s(){
-            return thumbnail_pic_s;
-        }
-        public String getThumbnail_pic_s02(){
-            return thumbnail_pic_s02;
-        }
-        public String getThumbnail_pic_s03(){
-            return thumbnail_pic_s03;
-        }
-        public String getDate(){
-            return date;
-        }
-        public String getAuthor_name(){
-            return author_name;
-        }
-
-    }
-
-
 }
