@@ -8,18 +8,13 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
 import android.widget.Toast;
 import android.text.TextUtils;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.funnews.MainActivity;
-import com.example.funnews.R;
+
 import java.util.ArrayList;
-import java.util.prefs.PreferenceChangeEvent;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
