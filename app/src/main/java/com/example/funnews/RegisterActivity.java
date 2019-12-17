@@ -195,7 +195,7 @@ public class RegisterActivity extends AppCompatActivity {
 
                     //将用户名和密码加入到数据库中
                     mDBOpenHelper.add(username, password);
-                    Intent intent2 = new Intent(this, MainActivity.class);
+                    Intent intent2 = new Intent(this, loginActivity.class);
                     startActivity(intent2);
                     finish();
                     Toast.makeText(this,  "验证通过，注册成功", Toast.LENGTH_SHORT).show();
