@@ -2,6 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".loginActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
@@ -47,7 +49,7 @@
         app:layout_constraintWidth_percent="0.80">
 
         <TextView
-            android:id="@+id/usrnameTe"
+            android:id="@+id/tv_loginactivity_username"
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.30"
             android:layout_height="wrap_content"
@@ -58,13 +60,15 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/et_loginactivity_username"
+            android:hint="请输入用户名"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintWidth_percent="0.70"
             android:textColor="@color/black"
             android:textSize="17dp"
-            app:layout_constraintBaseline_toBaselineOf="@id/usrnameTe"
-            app:layout_constraintLeft_toRightOf="@id/usrnameTe"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_loginactivity_username"
+            app:layout_constraintLeft_toRightOf="@id/tv_loginactivity_username"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -78,7 +82,7 @@
         app:layout_constraintWidth_percent="0.80">
 
         <TextView
-            android:id="@+id/pasTe"
+            android:id="@+id/tv_loginactivity_password"
             android:layout_width="0dp"
             app:layout_constraintWidth_percent="0.30"
             android:layout_height="wrap_content"
@@ -89,18 +93,21 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
+            android:id="@+id/et_loginactivity_password"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             app:layout_constraintWidth_percent="0.70"
             android:textColor="@color/black"
             android:textSize="17dp"
-            app:layout_constraintBaseline_toBaselineOf="@id/pasTe"
-            app:layout_constraintLeft_toRightOf="@id/pasTe"
+            android:hint="请输入密码"
+            android:inputType="textPassword"
+            app:layout_constraintBaseline_toBaselineOf="@id/tv_loginactivity_password"
+            app:layout_constraintLeft_toRightOf="@id/tv_loginactivity_password"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <TextView
-        android:id="@+id/newusr"
+        android:id="@+id/tv_loginactivity_register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="注册新用户"
@@ -114,6 +121,7 @@
         app:layout_constraintVertical_bias="0.552" />
 
     <TextView
+        android:id="@+id/tv_loginactivity_forget"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="找回密码"
@@ -127,6 +135,7 @@
         app:layout_constraintVertical_bias="0.552" />
 
     <TextView
+        android:id="@+id/tv_loginactivity_check"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="手机验证码登录"
@@ -140,6 +149,7 @@
 
 
     <ImageView
+        android:id="@+id/bt_loginactivity_login"
         android:layout_width="128px"
         android:layout_height="128px"
         android:layout_centerVertical="true"

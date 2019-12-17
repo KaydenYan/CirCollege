@@ -40,6 +40,7 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 
+
 public class MainActivity extends AppCompatActivity {
 
     //master
@@ -81,6 +82,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void getView(){
+        mybio = findViewById(R.id.myBtn);
         top=findViewById(R.id.top);
         shehui=findViewById(R.id.shehui);
         guonei=findViewById(R.id.guonei);
@@ -94,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
     }
     private void registListener(){
         listener = new CustomeOnClickListener();
+        mybio.setOnClickListener(listener);
         top.setOnClickListener(listener);
         shehui.setOnClickListener(listener);
         guonei.setOnClickListener(listener);
@@ -122,6 +125,13 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
+                case R.id.myBtn:
+                    Intent intent1 = new Intent(
+                            MainActivity.this,
+                            loginActivity.class
+                    );
+                    startActivity(intent1);
+                    break;
                 case R.id.top:
                     settext();
                     top.setTextColor(getResources().getColor(R.color.colorTheme));
@@ -418,6 +428,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }).start();
     }
+
 
 }
 
