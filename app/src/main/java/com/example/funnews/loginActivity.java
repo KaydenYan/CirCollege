@@ -1,7 +1,9 @@
 package com.example.funnews;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.EditText;
@@ -15,11 +17,16 @@ import android.text.TextUtils;
 import com.example.funnews.MainActivity;
 import com.example.funnews.R;
 import java.util.ArrayList;
+import java.util.prefs.PreferenceChangeEvent;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class loginActivity extends AppCompatActivity {
+
+    SharedPreferences sprfMain;
+    SharedPreferences.Editor editorMain;
 
     private DBOpenHelper mDBOpenHelper;
     //private TextView tv_loginactivity_register;
@@ -29,6 +36,15 @@ public class loginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        //判断登录状态
+        sprfMain= PreferenceManager.getDefaultSharedPreferences(this);
+        editorMain=sprfMain.edit();
+        if(sprfMain.getBoolean("main",false)){
+            Intent intent=new Intent(loginActivity.this,TextActivityTwo.class);
+            startActivity(intent);
+            loginActivity.this.finish();
+        }
+
         setContentView(R.layout.login);
         ButterKnife.bind(this);
         mDBOpenHelper = new DBOpenHelper(this);
@@ -96,6 +112,9 @@ public class loginActivity extends AppCompatActivity {
                     if (match) {
                         Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(this, TextActivityTwo.class);
+                        //记录登录状态
+                        editorMain.putBoolean("main",true);
+                        editorMain.commit();
                         startActivity(intent);
                         finish();//销毁此Activity
                     }else {
