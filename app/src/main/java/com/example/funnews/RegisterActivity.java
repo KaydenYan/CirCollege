@@ -32,8 +32,6 @@ public class RegisterActivity extends AppCompatActivity {
     private TextView yzm1;
     private EditText pnumber1;
     private EditText yzmhq1;
-    private TextView cs1;
-    private TextView cs2;
     private ImageView dl;
     private CustomeOnClickListener listener;
     //private int realcode = 123456;//(int) ((Math.random() * 9 + 1) * 100000);
@@ -146,8 +144,6 @@ public class RegisterActivity extends AppCompatActivity {
     public void getView(){
         pnumber1 = findViewById(R.id.pnumber);
         yzm1 = findViewById(R.id.yzm);
-        cs1=findViewById(R.id.cs1);
-        cs2=findViewById(R.id.cs2);
         dl=findViewById(R.id.bt_registeractivity_register);
     }
     private void registListener(){
@@ -186,8 +182,6 @@ public class RegisterActivity extends AppCompatActivity {
                     realcode=""+qwe;
                     String Pnumber = pnumber1.getText().toString().trim();
                     String aac="http://v.juhe.cn/sms/send?mobile="+Pnumber+"&tpl_id=201577&tpl_value=%23code%23%3D"+realcode+"&dtype=&key=376a8669319ed3b6811f12065d084c58";
-                    cs1.setText(realcode);
-                    cs2.setText(aac);
                     sendRequestWithOkHttp(aac);
                     break;
                 case R.id.bt_registeractivity_register:    //注册按钮
