@@ -125,13 +125,6 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             switch (v.getId()){
-                case R.id.myBtn:
-                    Intent intent1 = new Intent(
-                            MainActivity.this,
-                            loginActivity.class
-                    );
-                    startActivity(intent1);
-                    break;
                 case R.id.top:
                     settext();
                     top.setTextColor(getResources().getColor(R.color.colorTheme));

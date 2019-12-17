@@ -30,14 +30,12 @@
             </intent-filter>
         </activity>
         <activity android:name=".NewsInfoActivity"></activity>
-        <activity android:name=".RegisterActivity"></activity>
-        <activity android:name=".loginActivity"></activity>
         <activity android:name=".TextActivityTwo"></activity>
         <activity android:name=".TextActivity"></activity>
 
         <!--路径 前面为包名，后面为fileprovider固定值，使用包名便于区分-->
         <provider
-            android:name="android.support.v4.content.FileProvider"
+            android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.funnews.provider"
             android:exported="false"
             android:grantUriPermissions="true">
