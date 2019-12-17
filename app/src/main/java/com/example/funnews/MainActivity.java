@@ -67,14 +67,12 @@ public class MainActivity extends AppCompatActivity {
     private SQLiteDatabase db;
     private DBHelper_toutiao dbHelper;
     private ImageView likeBtn;
-    private CustomeClickListener listener;
+    private CustomeOnClickListener listener;
     private Button buttomQuery;
     private EditText editText;
-    //V1
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
     private String abc;
-    private CustomeOnClickListener listener;
     private ImageView mybio;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -90,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
         abc="http://v.juhe.cn/toutiao/index?dtype=&type=top&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
         sendRequestWithOkHttp(abc);
         newsList =findViewById(R.id.newsList);
-        adapter = new MyAdapter(this,toutiaos);
+        adapter = new MyAdapter(this,toutiaos);}
 
 
     public void getView(){
@@ -144,11 +142,11 @@ public class MainActivity extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()){
                 case R.id.myBtn:
-                    Intent intent1 = new Intent(
+                    Intent intent2 = new Intent(
                             MainActivity.this,
                             loginActivity.class
                     );
-                    startActivity(intent1);
+                    startActivity(intent2);
                     break;
                 case R.id.top:
                     settext();

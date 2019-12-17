@@ -3,8 +3,9 @@ package com.example.funnews.josnGet;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.support.annotation.Nullable;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
 
 public class DBHelper_toutiao extends SQLiteOpenHelper {
     public final Context context;
