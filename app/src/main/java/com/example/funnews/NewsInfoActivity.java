@@ -3,27 +3,28 @@ package com.example.funnews;
 
 import android.content.ContentValues;
 import android.content.Intent;
-import android.graphics.Color;
-import android.os.Build;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.funnews.josnGet.NewsInfoActivity_db;
 
 import java.util.ArrayList;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 public class NewsInfoActivity extends AppCompatActivity {
 
 
     private com.tencent.smtt.sdk.WebView webView;
     private ImageView likeBtn;
+    private ImageView commBtn;
     private CustomeOnClickListener listener;
     private NewsInfoActivity_db dbHelper;
     private SQLiteDatabase db;
@@ -66,12 +67,14 @@ public class NewsInfoActivity extends AppCompatActivity {
     private void registerListeners() {
         listener =new CustomeOnClickListener();
         likeBtn.setOnClickListener(listener);
+        commBtn.setOnClickListener(listener);
     }
 
 
     private void getViews() {
         likeBtn =findViewById(R.id.likeBtn);
         webView = findViewById(R.id.wv_content);
+        commBtn =findViewById(R.id.commBtn);
     }
 
     /**
@@ -234,6 +237,11 @@ public class NewsInfoActivity extends AppCompatActivity {
                     break;
                 case R.id.delete_item:
                     delete_db();
+                    break;
+                case R.id.commBtn:
+                    Intent intent1 = new Intent(NewsInfoActivity.this,
+                            pinglun.class);
+                    startActivity(intent1);
                     break;
             }
         }
