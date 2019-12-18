@@ -74,6 +74,7 @@ public class MainActivity extends AppCompatActivity {
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
     private String abc;
     private ImageView mybio;
+    private ImageView morebtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -96,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         top=findViewById(R.id.top);
         shehui=findViewById(R.id.shehui);
         guonei=findViewById(R.id.guonei);
+        morebtn=findViewById(R.id.moreBtn);
         guoji=findViewById(R.id.guoji);
         yule=findViewById(R.id.yule);
         tiyu=findViewById(R.id.tiyu);
@@ -111,6 +113,7 @@ public class MainActivity extends AppCompatActivity {
         listener = new CustomeOnClickListener();
         mybio.setOnClickListener(listener);
         top.setOnClickListener(listener);
+        morebtn.setOnClickListener(listener);
         shehui.setOnClickListener(listener);
         guonei.setOnClickListener(listener);
         guoji.setOnClickListener(listener);
@@ -215,11 +218,18 @@ public class MainActivity extends AppCompatActivity {
                     );
                     startActivity(intent);
                     break;
+                case R.id.moreBtn:
+                    Intent intent5 =new Intent();
+                    intent5.setClass(
+                            MainActivity.this,weather.class
+                    );
+                    startActivity(intent5);
+                    break;
                 case R.id.buttomQuery:
                     editText = findViewById(R.id.edtQuery);
                     String querry = editText.getText().toString();
                     Intent intent1 = new Intent(MainActivity.this,
-                            query.class);
+                            seran.class);
                     intent1.putExtra("querry",querry);
                     startActivity(intent1);
                     break;

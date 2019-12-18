@@ -80,7 +80,7 @@ public class TextActivityTwo extends Activity implements View.OnClickListener{
         //加载用户名
         Intent intent = this.getIntent();
         Bundle bundle = intent.getExtras();
-        String nameUser1 = bundle.getString("nameUser");
+        String nameUser1 = "user";
         userNa1 = findViewById(R.id.userNa);
         userNa1.setText(nameUser1);
 

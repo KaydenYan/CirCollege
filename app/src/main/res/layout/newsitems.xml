@@ -17,20 +17,20 @@
         android:layout_marginRight="15dp"/>
     <ImageView
         android:id="@+id/itemImg"
-        android:layout_width="256px"
-        android:layout_height="192px"
+        android:layout_width="384px"
+        android:layout_height="288px"
         app:layout_constraintLeft_toLeftOf="parent"
         android:layout_centerVertical="true"
         android:scaleType="centerInside"
         app:layout_constraintTop_toBottomOf="@id/itemTitle"
         android:layout_marginLeft="15dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginTop="3dp"/>
 
     <TextView
         android:id="@+id/itemDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="90dp"
         android:layout_marginRight="15dp"
         android:text=""
         app:layout_constraintRight_toRightOf="parent"
@@ -40,7 +40,7 @@
         android:id="@+id/itemAuthor"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="60dp"
+        android:layout_marginTop="90dp"
         android:layout_marginRight="15dp"
         android:text=""
         app:layout_constraintRight_toLeftOf="@id/itemDate"

@@ -23,8 +23,8 @@
         app:layout_constraintTop_toBottomOf="@id/itemTitle">
         <ImageView
             android:id="@+id/itemImg"
-            android:layout_width="256px"
-            android:layout_height="192px"
+            android:layout_width="384px"
+            android:layout_height="288px"
             app:layout_constraintHorizontal_bias="0.1"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
@@ -35,8 +35,8 @@
 
         <ImageView
             android:id="@+id/itemImg3"
-            android:layout_width="256px"
-            android:layout_height="192px"
+            android:layout_width="384px"
+            android:layout_height="288px"
             app:layout_constraintHorizontal_bias="0.9"
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintLeft_toLeftOf="parent"
