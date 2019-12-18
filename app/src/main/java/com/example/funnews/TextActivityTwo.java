@@ -19,6 +19,7 @@ import android.provider.MediaStore;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
@@ -41,7 +42,10 @@ public class TextActivityTwo extends Activity implements View.OnClickListener{
     private Button pop_img;
     private Button pop_file;
     private Button pop_cancle;
-    private Button bt_zx;
+    private View bt_zx;
+    private ImageView homepage;
+    private CustomeOnClickListener listener;
+    private ImageView likepage;
     SharedPreferences sprfMain;
     SharedPreferences.Editor editorMain;
     private TextView userNa1;
@@ -65,7 +69,10 @@ public class TextActivityTwo extends Activity implements View.OnClickListener{
         ActivityCompat.requestPermissions(this,
                 new String[]{Manifest.permission.CAMERA, Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.READ_EXTERNAL_STORAGE},
                 1);
-
+        homepage=findViewById(R.id.homeBtn);
+        likepage=findViewById(R.id.likeBtn);
+        setStatusBar();
+        registListener();
         initPopWindow();
         initView();
         load();
@@ -77,7 +84,7 @@ public class TextActivityTwo extends Activity implements View.OnClickListener{
         userNa1 = findViewById(R.id.userNa);
         userNa1.setText(nameUser1);
 
-        bt_zx = (Button) findViewById(R.id.zhuxiao);
+        bt_zx =findViewById(R.id.zhuxiao);
         bt_zx.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -96,6 +103,34 @@ public class TextActivityTwo extends Activity implements View.OnClickListener{
         editorMain=sprfMain.edit();
         editorMain.putBoolean("main",false);
         editorMain.commit();
+    }
+
+    private void registListener(){
+        listener = new CustomeOnClickListener();
+        homepage.setOnClickListener(listener);
+        likepage.setOnClickListener(listener);
+    }
+    class CustomeOnClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.homeBtn:
+                    Intent intent2 = new Intent(
+                            TextActivityTwo.this,
+                            MainActivity.class
+                    );
+                    startActivity(intent2);
+                    break;
+                case R.id.likeBtn:
+                    Intent intent3 = new Intent(
+                            TextActivityTwo.this,
+                            sss.class
+                    );
+                    startActivity(intent3);
+                    break;
+            }
+        }
     }
 
 
@@ -146,7 +181,29 @@ public class TextActivityTwo extends Activity implements View.OnClickListener{
                 break;
         }
     }
+    protected void setStatusBar() {//状态栏沉浸，状态栏颜色，状态栏系统图标的深浅色
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
+            View decorView = getWindow().getDecorView();
+            int option = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                    | View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+            decorView.setSystemUiVisibility(option);
+            //根据上面设置是否对状态栏单独设置颜色
+            if (false) {
+                getWindow().setStatusBarColor(getResources().getColor(R.color.colorTheme));//设置状态栏背景色
+            } else {
+                getWindow().setStatusBarColor(Color.TRANSPARENT);//透明
+            }
+        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {//4.4到5.0
+            WindowManager.LayoutParams localLayoutParams = getWindow().getAttributes();
+            localLayoutParams.flags = (WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS | localLayoutParams.flags);
+        } else {
+            //Toast.makeText(this, "低于4.4的android系统版本不存在沉浸式状态栏", Toast.LENGTH_SHORT).show();
+        }
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && true) {//android6.0以后可以对状态栏文字颜色和图标进行修改
+            getWindow().getDecorView().setSystemUiVisibility(View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN | View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR);
+        }
+    }
     private void save(String mFile){
         SharedPreferences.Editor editor = getSharedPreferences("data",MODE_PRIVATE).edit();//获得SHaredPreferences.Editor对象
         editor.putBoolean("imageChange",true);//添加一个名为imageChange的boolean值，数值为true

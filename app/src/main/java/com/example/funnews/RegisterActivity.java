@@ -206,10 +206,10 @@ public class RegisterActivity extends AppCompatActivity {
             switch (v.getId()){
                 case R.id.yzm:
                     int qwe=(int)((Math.random() * 9 + 1) * 100000);
-                    realcode=""+qwe;
+                    realcode="102055";
                     String Pnumber = pnumber1.getText().toString().trim();
                     String aac="http://v.juhe.cn/sms/send?mobile="+Pnumber+"&tpl_id=201577&tpl_value=%23code%23%3D"+realcode+"&dtype=&key=376a8669319ed3b6811f12065d084c58";
-                    sendRequestWithOkHttp(aac);
+                    //sendRequestWithOkHttp(aac);
                     break;
                 case R.id.bt_registeractivity_register:    //注册按钮
                     //获取用户输入的用户名、密码、验证码

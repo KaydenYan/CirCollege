@@ -6,7 +6,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/commuser"
-        android:text="asfasf"
         android:textSize="15dp"
         />
     <TextView
@@ -14,7 +13,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/commcon"
-        android:textSize="22dp"
-        android:text="safasfasf"/>
+        android:textSize="22dp"/>
 
 </LinearLayout>

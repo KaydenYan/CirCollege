@@ -16,7 +16,7 @@
         android:layout_height="300dp">
 
         <ImageView
-            android:src="@drawable/my"
+            android:src="@drawable/zxs"
             android:id="@+id/image"
             android:layout_centerInParent="true"
             android:layout_width="120dp"
@@ -24,25 +24,119 @@
 
         <TextView
             android:id="@+id/userNa"
+            android:layout_marginTop="20dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@+id/image"
             android:layout_centerHorizontal="true"
             android:textSize="20sp"
-            android:text="趣资讯用户001"/>
+            android:text="user"/>
 
 
     </RelativeLayout>
 
-    <Button
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:id="@+id/zhuxiao"
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="注销"
-        tools:layout_editor_absoluteX="161dp"
-        tools:layout_editor_absoluteY="341dp" />
+        android:id="@+id/zhuxiao"
+        android:layout_marginLeft="140dp"
+        android:layout_marginTop="544dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/wwe"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:src="@drawable/zxdl"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="   注销"
+            android:layout_marginTop="5dp"
+            android:textColor="@color/colorTheme"
+            android:textSize="30dp"
+            app:layout_constraintLeft_toRightOf="@+id/wwe"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/buttomTab"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintHeight_percent="0.10"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+
+        <ImageView
+            android:id="@+id/homeBtn"
+            android:layout_width="140px"
+            android:layout_height="140px"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/home"
+
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.10"
+            app:layout_constraintVertical_bias="0.50"/>
+
+        <ImageView
+            android:id="@+id/likeBtn"
+            android:layout_width="140px"
+            android:layout_height="140px"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/heart"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.38"
+            app:layout_constraintVertical_bias="0.50"/>
+
+        <ImageView
+            android:id="@+id/moreBtn"
+            android:layout_width="140px"
+            android:layout_height="140px"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/moref"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.66"
+            app:layout_constraintVertical_bias="0.50"/>
+
+        <ImageView
+            android:id="@+id/myBtn"
+            android:layout_width="140px"
+            android:layout_height="140px"
+            android:layout_centerVertical="true"
+            android:scaleType="centerInside"
+            android:src="@drawable/my"
+            android:tint="@color/colorTheme"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.90"
+            app:layout_constraintVertical_bias="0.50"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
