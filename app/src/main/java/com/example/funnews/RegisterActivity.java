@@ -246,9 +246,9 @@ public class RegisterActivity extends AppCompatActivity {
                             startActivity(intent2);
                             finish();
                             Toast.makeText(RegisterActivity.this,  "验证通过，注册成功", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(RegisterActivity.this, "验证码错误,注册失败", Toast.LENGTH_SHORT).show();
-                        }
+                       } else {
+                           Toast.makeText(RegisterActivity.this, "验证码错误,注册失败", Toast.LENGTH_SHORT).show();
+                       }
                     }else {
                         Toast.makeText(RegisterActivity.this, "未完善信息，注册失败", Toast.LENGTH_SHORT).show();
                     }

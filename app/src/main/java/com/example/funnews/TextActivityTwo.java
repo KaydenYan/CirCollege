@@ -22,6 +22,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.PopupWindow;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -43,6 +44,7 @@ public class TextActivityTwo extends Activity implements View.OnClickListener{
     private Button bt_zx;
     SharedPreferences sprfMain;
     SharedPreferences.Editor editorMain;
+    private TextView userNa1;
 
     //相册请求码
     private static final int ALBUM_REQUEST_CODE = 1;
@@ -67,6 +69,13 @@ public class TextActivityTwo extends Activity implements View.OnClickListener{
         initPopWindow();
         initView();
         load();
+
+        //加载用户名
+        Intent intent = this.getIntent();
+        Bundle bundle = intent.getExtras();
+        String nameUser1 = bundle.getString("nameUser");
+        userNa1 = findViewById(R.id.userNa);
+        userNa1.setText(nameUser1);
 
         bt_zx = (Button) findViewById(R.id.zhuxiao);
         bt_zx.setOnClickListener(new View.OnClickListener() {

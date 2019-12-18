@@ -114,6 +114,10 @@ public class loginActivity extends AppCompatActivity {
                     if (match) {
                         Toast.makeText(this, "登录成功", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(this, TextActivityTwo.class);
+                        //记录用户名
+                        Bundle bundle = new Bundle();
+                        bundle.putString("nameUser",name);
+                        intent.putExtras(bundle);
                         //记录登录状态
                         editorMain.putBoolean("main",true);
                         editorMain.commit();
