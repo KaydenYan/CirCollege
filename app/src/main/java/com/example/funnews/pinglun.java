@@ -83,10 +83,6 @@ public class pinglun extends AppCompatActivity {
         ContentValues cv =new ContentValues();
         edtComm = findViewById(R.id.edtComm);
         String querry = edtComm.getText().toString();
-        String a ="date";
-        String b ="111";
-        cv.put("author_name",a);
-        cv.put("pinglun",b);
 
         db.insert("pinglunss",null,cv);
     }

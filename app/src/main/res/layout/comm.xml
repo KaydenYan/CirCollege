@@ -11,15 +11,7 @@
     -->
 
 
-    <ImageView
-        android:id="@+id/kbi"
-        app:layout_constraintBottom_toTopOf="@id/colsa"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="match_parent"
-        android:layout_height="0dp"
-        app:layout_constraintHeight_percent="0.50"/>
+
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -27,8 +19,8 @@
         app:layout_constraintBottom_toTopOf="@id/comll"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/kbi"
-        app:layout_constraintHeight_percent="0.42">
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHeight_percent="0.92">
 
         <com.scwang.smartrefresh.layout.header.ClassicsHeader
             android:layout_width="match_parent"
