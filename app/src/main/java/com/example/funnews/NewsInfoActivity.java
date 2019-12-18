@@ -30,7 +30,6 @@ public class NewsInfoActivity extends AppCompatActivity {
     private ArrayList<likenews> likenews;
     private int position;
     private String[][] d;
-    private ImageView delete_item;
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
 
@@ -67,14 +66,12 @@ public class NewsInfoActivity extends AppCompatActivity {
     private void registerListeners() {
         listener =new CustomeOnClickListener();
         likeBtn.setOnClickListener(listener);
-        delete_item.setOnClickListener(listener);
     }
 
 
     private void getViews() {
         likeBtn =findViewById(R.id.likeBtn);
         webView = findViewById(R.id.wv_content);
-        delete_item =findViewById(R.id.delete_item);
     }
 
     /**

@@ -85,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
         registListener();
         toutiaos=new ArrayList<toutiao>();
         int width = webView.getView().getWidth();
-        abc="http://v.juhe.cn/toutiao/index?dtype=&type=top&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+        abc="http://v.juhe.cn/toutiao/index?dtype=&type=top&key=9fe86c01aaab242950dac112dc8b1271&";
         sendRequestWithOkHttp(abc);
         newsList =findViewById(R.id.newsList);
         adapter = new MyAdapter(this,toutiaos);}
@@ -151,61 +151,61 @@ public class MainActivity extends AppCompatActivity {
                 case R.id.top:
                     settext();
                     top.setTextColor(getResources().getColor(R.color.colorTheme));
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=top&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=top&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.shehui:
                     settext();
                     shehui.setTextColor(getResources().getColor(R.color.colorTheme));
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=shehui&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=shehui&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.guonei:
                     settext();
                     guonei.setTextColor(getResources().getColor(R.color.colorTheme));
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=guonei&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=guonei&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.guoji:
                     settext();
                     guoji.setTextColor(getResources().getColor(R.color.colorTheme));
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=guoji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=guoji&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.yule:
                     settext();
                     yule.setTextColor(getResources().getColor(R.color.colorTheme));
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=yule&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.tiyu:
                     settext();
                     tiyu.setTextColor(getResources().getColor(R.color.colorTheme));
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=tiyu&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=tiyu&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.junshi:
                     settext();
                     junshi.setTextColor(getResources().getColor(R.color.colorTheme));
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=junshi&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=junshi&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.keji:
                     settext();
                     keji.setTextColor(getResources().getColor(R.color.colorTheme));
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=keji&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.caijing:
                     settext();
                     caijing.setTextColor(getResources().getColor(R.color.colorTheme));
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=caijing&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=caijing&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.shishang:
                     settext();
                     shishang.setTextColor(getResources().getColor(R.color.colorTheme));
-                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=shishang&key=fc7421a2343b5b6da2a0c3d93b571b0c&";
+                    abc="http://v.juhe.cn/toutiao/index?dtype=&type=shishang&key=9fe86c01aaab242950dac112dc8b1271&";
                     sendRequestWithOkHttp(abc);
                     break;
                 case R.id.likeBtn:
