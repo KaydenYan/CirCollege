@@ -123,7 +123,7 @@ public class sss extends AppCompatActivity {
                         /**
                          * 创建一个意图
                          */
-                        Intent intent = new Intent(sss.this,NewsInfoActivity.class);
+                        Intent intent = new Intent(sss.this,likenews_view.class);
                         /**
                          * 在datas中通过点击的位置position通过get()方法获得具体某个新闻
                          * 的数据然后通过Intent的putExtra()传递到NewsInfoActivity中
