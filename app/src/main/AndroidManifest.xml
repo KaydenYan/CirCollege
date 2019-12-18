@@ -52,6 +52,7 @@
         <activity android:name=".sss"></activity>
         <activity android:name=".query"></activity>
         <activity android:name=".likenews_view"></activity>
+        <activity android:name=".pinglun"></activity>
     </application>
 
 </manifest>

@@ -24,7 +24,7 @@ public class likenews_view extends AppCompatActivity {
     private int position;
     private String[][] d;
     private ImageView delete_item;
-
+    private ImageView commBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -57,12 +57,14 @@ public class likenews_view extends AppCompatActivity {
     private void registerListeners() {
         listener =new likenews_view.CustomeOnClickListener();
         delete_item.setOnClickListener(listener);
+        commBtn.setOnClickListener(listener);
     }
 
 
     private void getViews() {
         webView = findViewById(R.id.wv_content);
         delete_item =findViewById(R.id.delete_item);
+        commBtn =findViewById(R.id.commBtn);
     }
 
     /**
@@ -193,6 +195,11 @@ public class likenews_view extends AppCompatActivity {
                 case R.id.delete_item:
                     delete_db();
                     delete_item.setColorFilter(getResources().getColor(R.color.black));
+                    break;
+                case R.id.commBtn:
+                    Intent intent1 = new Intent(likenews_view.this,
+                            pinglun.class);
+                    startActivity(intent1);
                     break;
             }
         }
