@@ -30,6 +30,7 @@
         <activity android:name=".NewsInfoActivity"></activity>
         <activity android:name=".sss"></activity>
         <activity android:name=".query"></activity>
+        <activity android:name=".likenews_view"></activity>
     </application>
 
 </manifest>
