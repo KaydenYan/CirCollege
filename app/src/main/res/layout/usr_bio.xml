@@ -29,7 +29,7 @@
             android:layout_below="@+id/image"
             android:layout_centerHorizontal="true"
             android:textSize="20sp"
-            android:text="qzx100026"/>
+            android:text="趣资讯用户001"/>
 
 
     </RelativeLayout>
