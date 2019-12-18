@@ -192,6 +192,13 @@ public class sss extends AppCompatActivity {
                          * 的数据然后通过Intent的putExtra()传递到NewsInfoActivity中
                          */
                         intent.putExtra("url", likenews.get(position).getUrl());
+                        intent.putExtra("title",likenews.get(position).getTitle());
+                        intent.putExtra("author_name",likenews.get(position).getAuthor_name());
+                        intent.putExtra("date",likenews.get(position).getDate());
+                        intent.putExtra("thumbnail_pic_s",likenews.get(position).getThumbnail_pic_s());
+                        intent.putExtra("thumbnail_pic_s02",likenews.get(position).getThumbnail_pic_s02());
+                        intent.putExtra("thumbnail_pic_s03",likenews.get(position).getThumbnail_pic_s03());
+                        intent.putExtra("shoucang",likenews.get(position).getShoucang());
                         sss.this.startActivity(intent);//启动Activity
                     }
                 });
