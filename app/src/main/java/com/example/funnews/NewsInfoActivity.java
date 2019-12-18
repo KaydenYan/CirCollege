@@ -202,13 +202,6 @@ public class NewsInfoActivity extends AppCompatActivity {
                     if(tt.size()==0){
                         insertdb();
                         likeBtn.setColorFilter(getResources().getColor(R.color.colorTheme));
-                    }else{
-                        if(title.equals(tt.get(0).getTitle())){
-                            insertdb();
-                            likeBtn.setColorFilter(getResources().getColor(R.color.colorTheme));
-                        }else{
-                            delete_db();
-                        }
                     }
                     break;
                 case R.id.delete_item:
