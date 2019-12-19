@@ -163,11 +163,6 @@ public class likenews_view extends AppCompatActivity {
         String str = getIntent().getStringExtra("title");
         String[] whereParam = new String[]{str};
         db = dbHelper.getWritableDatabase();
-        Toast.makeText(
-                getApplicationContext(),
-                "删除成功",
-                Toast.LENGTH_SHORT
-        ).show();
         db.delete("likenews",where,whereParam);
     }
 
@@ -186,12 +181,6 @@ public class likenews_view extends AppCompatActivity {
         String[] args = {String.valueOf("ok")};
         db = dbHelper.getWritableDatabase();
         db.update("likenews",cv,where,args);
-        Toast.makeText(
-                getApplicationContext(),
-                "更新成功",
-                Toast.LENGTH_SHORT
-        ).show();
-
     }
     private ArrayList<likenews> initData() {
         //遍历Cursor

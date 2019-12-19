@@ -148,11 +148,7 @@ public class NewsInfoActivity extends AppCompatActivity {
             }
             String shoucang =getIntent().getStringExtra("shoucang");
             cv.put("shoucang",shoucang);
-            Toast.makeText(
-                    getApplicationContext(),
-                    "收藏成功",
-                    Toast.LENGTH_SHORT
-            ).show();
+
             db.replace("likenews",null,cv);
             String[] args = {String.valueOf("ok")};
             String where = "shoucang=?";
