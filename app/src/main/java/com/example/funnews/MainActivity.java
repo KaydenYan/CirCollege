@@ -220,6 +220,7 @@ public class MainActivity extends AppCompatActivity {
                     intent5.setClass(
                             MainActivity.this,weather.class
                     );
+                    intent5.putExtra("cityn","石家庄");
                     startActivity(intent5);
                     break;
                 case R.id.buttomQuery:

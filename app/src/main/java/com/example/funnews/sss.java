@@ -30,6 +30,7 @@ public class sss extends AppCompatActivity {
     private CustomeOnClickListener listener;
     private ImageView homepage;
     private ImageView biopage;
+    private ImageView weapage;
     private SQLiteDatabase db;
     protected boolean useThemestatusBarColor = false;//false状态栏透明，true状态栏使用颜色
     protected boolean useStatusBarColor = true;//false状态栏图标浅色，true状态栏颜色深色
@@ -39,6 +40,7 @@ public class sss extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         homepage=findViewById(R.id.homeBtn);
         biopage=findViewById(R.id.myBtn);
+        weapage=findViewById(R.id.moreBtn);
         setStatusBar();
         registListener();
         likenews=new ArrayList<likenews>();
@@ -83,6 +85,7 @@ public class sss extends AppCompatActivity {
         listener = new CustomeOnClickListener();
         homepage.setOnClickListener(listener);
         biopage.setOnClickListener(listener);
+        weapage.setOnClickListener(listener);
     }
     protected void setStatusBar() {//状态栏沉浸，状态栏颜色，状态栏系统图标的深浅色
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {//5.0及以上
@@ -126,6 +129,14 @@ public class sss extends AppCompatActivity {
                             loginActivity.class
                     );
                     startActivity(intent3);
+                    break;
+                case R.id.moreBtn:
+                    Intent intent6 = new Intent(
+                            sss.this,
+                            weather.class
+                    );
+                    intent6.putExtra("cityn","石家庄");
+                    startActivity(intent6);
                     break;
             }
         }

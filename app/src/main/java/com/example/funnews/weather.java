@@ -1,12 +1,16 @@
 package com.example.funnews;
 
 
+import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.Color;
+import android.media.Image;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -33,7 +37,13 @@ public class weather extends AppCompatActivity {
     private TextView wind;
     private TextView windji;
     private TextView api;
+    private ImageView myb;
+    private ImageView homeb;
+    private ImageView likeb;
+    private CustomeOnClickListener listener;
+    private ImageView ww;
     private String abc;
+    private String cityn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,11 +53,64 @@ public class weather extends AppCompatActivity {
         tem=findViewById(R.id.tem);
         wea=findViewById(R.id.wea);
         wind=findViewById(R.id.wind);
+        myb=findViewById(R.id.myBtn);
+        ww=findViewById(R.id.swea);
+        homeb=findViewById(R.id.homeBtn);
+        likeb=findViewById(R.id.likeBtn);
         windji=findViewById(R.id.windji);
         api=findViewById(R.id.api);
         setStatusBar();
-        abc="http://apis.juhe.cn/simpleWeather/query?city=石家庄&key=75993fd1fe1979ea8183643690884b00";
+        registListener();
+        Intent intent = this.getIntent();
+        cityn = intent.getStringExtra("cityn");
+        abc="http://apis.juhe.cn/simpleWeather/query?city="+cityn+"&key=75993fd1fe1979ea8183643690884b00";
         sendRequestWithOkHttp(abc);
+    }
+    private void registListener(){
+        listener = new CustomeOnClickListener();
+        ww.setOnClickListener(listener);
+        myb.setOnClickListener(listener);
+        homeb.setOnClickListener(listener);
+        likeb.setOnClickListener(listener);
+    }
+
+
+    class CustomeOnClickListener implements View.OnClickListener {
+
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()){
+                case R.id.swea:
+                    Intent intent2 = new Intent(
+                            weather.this,
+                            getwea.class
+                    );
+                    startActivity(intent2);
+                    break;
+                case R.id.myBtn:
+                    Intent intent3 = new Intent(
+                            weather.this,
+                            loginActivity.class
+                    );
+                    startActivity(intent3);
+                    break;
+                case R.id.homeBtn:
+                    Intent intent6 = new Intent(
+                            weather.this,
+                            MainActivity.class
+                    );
+                    startActivity(intent6);
+                    break;
+                case R.id.likeBtn:
+                    Intent intent7 = new Intent(
+                            weather.this,
+                            sss.class
+                    );
+                    startActivity(intent7);
+                    break;
+
+            }
+        }
     }
 
 
