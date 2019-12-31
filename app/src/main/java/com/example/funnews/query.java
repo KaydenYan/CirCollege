@@ -133,6 +133,13 @@ public class query extends AppCompatActivity {
                  * 的数据然后通过Intent的putExtra()传递到NewsInfoActivity中
                  */
                 intent.putExtra("url", toutiaos.get(position).getUrl());
+                intent.putExtra("title",toutiaos.get(position).getTitle());
+                intent.putExtra("author_name",toutiaos.get(position).getAuthor_name());
+                intent.putExtra("date",toutiaos.get(position).getDate());
+                intent.putExtra("thumbnail_pic_s",toutiaos.get(position).getThumbnail_pic_s());
+                intent.putExtra("thumbnail_pic_s02",toutiaos.get(position).getThumbnail_pic_s02());
+                intent.putExtra("thumbnail_pic_s03",toutiaos.get(position).getThumbnail_pic_s03());
+                intent.putExtra("shoucang",toutiaos.get(position).getShoucang());
                 query.this.startActivity(intent);//启动Activity
             }
         });

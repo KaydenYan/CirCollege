@@ -37,7 +37,7 @@ public class pinglun extends AppCompatActivity {
         setContentView(R.layout.comm);
         getViews();
         registerListeners();
-
+        initDBbyDatabaseHelper();
         run();
     }
 
@@ -78,13 +78,45 @@ public class pinglun extends AppCompatActivity {
 
         return pingluns;
     }
+    private void int2Date(){
+        //遍历Cursor
+        ContentValues cv =new ContentValues();
+        String a ="达哥的平底锅";
+        String b ="卢本伟牛逼";
+        cv.put("author_name",a);
+        cv.put("pinglun",b);
+
+        db.replace("pinglunss",null,cv);
+    }
+    private void int3Date(){
+        //遍历Cursor
+        ContentValues cv =new ContentValues();
+        String a ="无敌小帅达";
+        String b ="ig牛逼";
+        cv.put("author_name",a);
+        cv.put("pinglun",b);
+
+        db.replace("pinglunss",null,cv);
+    }
+    private void int4Date(){
+        //遍历Cursor
+        ContentValues cv =new ContentValues();
+        String a ="我爱冯提莫";
+        String b ="冯提莫真漂亮";
+        cv.put("author_name",a);
+        cv.put("pinglun",b);
+
+        db.replace("pinglunss",null,cv);
+    }
     private void intDate(){
         //遍历Cursor
         ContentValues cv =new ContentValues();
-        edtComm = findViewById(R.id.edtComm);
-        String querry = edtComm.getText().toString();
+        String a ="date";
+        String b ="111";
+        cv.put("author_name",a);
+        cv.put("pinglun",b);
 
-        db.insert("pinglunss",null,cv);
+        db.replace("pinglunss",null,cv);
     }
     public void int1Date(){
         ContentValues cv =new ContentValues();
@@ -93,7 +125,7 @@ public class pinglun extends AppCompatActivity {
         cv.put("author_name","user");
         cv.put("pinglun",querry);
 
-        db.insert("pinglunss",null,cv);
+        db.replace("pinglunss",null,cv);
     }
     class CustomeOnClickListener implements View.OnClickListener{
 
@@ -101,17 +133,20 @@ public class pinglun extends AppCompatActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.buttomComm:
-                    intDate();
+
                     int1Date();
-                    initData();
                     edtComm.setText(null);
                     break;
             }
         }
     }
     public void run(){
-        initDBbyDatabaseHelper();
 
+        intDate();
+        int2Date();
+        int3Date();
+        int4Date();
+        initData();
         commList.setAdapter(adapter);
         final ArrayList<pinglun_sjk> finalPingluns = pingluns;
         commList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -124,6 +159,6 @@ public class pinglun extends AppCompatActivity {
                 ).show();
             }
         });
-        pingluns = initData();
+
     }
 }

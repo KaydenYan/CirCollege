@@ -118,7 +118,7 @@ public class NewsInfoActivity extends AppCompatActivity {
     }
 
     private void insertdb(){
-        for(int i=0;i<30;i++){
+
             ContentValues cv =new ContentValues();
 
             String title = getIntent().getStringExtra("title");
@@ -154,7 +154,7 @@ public class NewsInfoActivity extends AppCompatActivity {
             String where = "shoucang=?";
             db = dbHelper.getWritableDatabase();
             db.update("likenews",cv,where,args);
-        }
+
     }
 
     private void delete_db(){

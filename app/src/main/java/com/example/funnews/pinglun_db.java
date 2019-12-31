@@ -16,7 +16,7 @@ public class pinglun_db extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String sql = "create table pinglunss(author_name varchar(100),pinglun varchar(1000))";
+        String sql = "create table pinglunss(author_name varchar(100),pinglun varchar(1000),primary key(author_name,pinglun))";
         db.execSQL(sql);
     }
 
